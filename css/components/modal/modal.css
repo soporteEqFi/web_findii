@@ -1,0 +1,104 @@
+.modal {
+    display: none;
+    /* POr defecto no se muestran en pantalla hasta que se abran */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal-contenido {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vw;
+    margin: 2% 25%;
+    padding: 2vw;
+    background-color: var(--blanco);
+    border-radius: 0.5vw;
+    width: 50vw;
+    min-height: 80vh;
+    justify-content: center;
+}
+
+.modal-cabecera {
+    display: flex;
+    border-bottom: 1px solid var(--fondo);
+}
+
+.modal-cabecera {
+    display: flex;
+    align-items: center;
+    /* column-gap: 0.5vw; */
+    justify-content: flex-end;
+    padding: 0 1vw 1vw 0;
+}
+
+.modal-cuerpo input[type=text],
+.modal-cuerpo input[type=date],
+.modal-cuerpo input[type=time],
+.modal-cuerpo input[type=email],
+.modal-cuerpo input[type=password],
+.modal-cuerpo input[type=phone],
+.modal-cuerpo input[type=number],
+.modal-cuerpo select {
+    width: 20vw;
+    padding: 0.5vw 1vw;
+    box-sizing: border-box;
+    border: 1px solid #cdcdcd;
+    border-radius: 0.5vw;
+}
+
+.modal-cuerpo textarea{
+    border: 1px solid #cdcdcd;
+    border-radius: 0.5vw;
+    padding: 10px;
+    height: 80px;
+    width: 20vw;
+    resize: none;
+}
+
+.modal-cuerpo .campos .informacion-agente-venta{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.modal-cuerpo .campos .informacion-agente{
+    display: flex;
+    padding: 2vw 0;
+    justify-content: space-around;
+}
+
+.modal-cuerpo .campos .informacion-venta{
+    display: flex;
+    column-gap: 2vw;
+    overflow: auto;
+    height: 50vh;
+    justify-content: space-between;
+}
+
+.informacion-venta .contenido-venta{
+    display: grid;
+    row-gap: 20px;
+}
+
+.informacion-venta .campo .texto{
+    font-weight: bold;
+}
+
+.informacion-venta .contenido-editable{
+    height: 20vh;
+    display: grid;
+    column-gap: 50px;
+    justify-content: center;
+    row-gap: 20px;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
