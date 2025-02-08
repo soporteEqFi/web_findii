@@ -1,0 +1,120 @@
+@import url(./config/global.css);
+
+.contenedor-pagina{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+.contenedor-pagina .pagina-principal{
+    display: grid;
+    grid-template-areas:
+    "opciones  contenido";
+    /* grid-template-columns: repeat(2, 1fr);  */
+    height: 100vh;
+}
+
+.contenedor-pagina .pagina-principal .menu{
+    grid-area: opciones;
+    display: flex;
+    justify-content: center;
+    background-color: #44ccbc;
+    width: 17dvw;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+.contenedor-pagina .pagina-principal .contenido{
+    grid-area: contenido;
+    display: flex;
+    background: transparent;
+    width: 83dvw;
+}
+
+
+/*MENU*/
+.menu-contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*MENU CABECERA*/
+.menu-cabecera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-cabecera-contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* column-gap: 1vw; */
+}
+
+.menu-cabecera .titulo-menu{
+    font-size: 0.5rem;
+    text-transform: uppercase;
+}
+.menu-cabecera .imagen-cabecera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-cabecera .imagen-cabecera img{
+    height: 7vh;
+    border-radius: 20%;
+}
+/*MENU OPCIONES*/
+.menu-opciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    row-gap: 1vw;
+}
+.opciones{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.3vw;
+
+}
+.opciones li{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    padding: 1vw 0;
+    font-weight: 700;
+}
+.opciones li:hover{
+    border-top: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    /* background-color: #d4d4e4; */
+
+}
+
+/*MENU INFORMACION*/
+
+.menu-informacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.menu-informacion .logo-info{
+    display: flex;
+    justify-content: center;
+}
+.menu-informacion .logo-info img{
+    height: 9dvh;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+}
+.menu-informacion .info-usuario{
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight:600;
+}
+
