@@ -1,0 +1,49 @@
+.contenido-datos-estadisticos {
+    display: flex;
+    column-gap: 2vw;
+}
+
+.contenido-datos-estadisticos .estadistica {
+    display: grid;
+    grid-template-areas:
+        "valor icono"
+        "titulo titulo";
+    background-color: #ffffff;
+    padding: 0.5vw 1.5vw;
+    /* column-gap: 2vw; */
+    /* row-gap: 2vw; */
+    border-radius: 0.5vw;
+    justify-content: space-between;
+    box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.08);
+    width: 12vw;
+}
+
+.estadistica .titulo {
+    grid-area: titulo;
+}
+
+.estadistica .titulo p {
+    color: #00000088;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.estadistica .valor {
+    grid-area: valor;
+}
+
+.estadistica .valor p {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.estadistica .icono {
+    display: flex;
+    align-items: start;
+    grid-area: icono;
+    color: #030303;
+}
+
+.estadistica .icono i{
+    font-size: 40px;
+} 

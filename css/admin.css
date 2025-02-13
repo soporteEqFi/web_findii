@@ -1,0 +1,41 @@
+@import url(./config/global.css);
+@import url(./config/grid.css);
+@import url(./components/modal/modal.css);
+/*@import url(./components/menu/menu.css);*/
+@import url(./components/menu/menu-opciones.css); 
+@import url(./components/tabla/tabla.css);
+@import url(./components/cuadros-estadisticos/cuadros-estadisticos.css);
+
+.contenedor-scroll{
+    display: flex;
+    flex-direction: column;
+    height: 80dvh;
+    overflow: auto;
+}
+.posiciones{
+    padding: 2dvw;
+}
+
+.tarjetas{
+    display: flex;
+    column-gap: 50px;
+}
+
+.tarjeta{
+    display: flex;
+    row-gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.tarjeta .cabecera .titulo p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tarjeta .cuerpo .descripcion .lista{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    row-gap: 20px;
+}
