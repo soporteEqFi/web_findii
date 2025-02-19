@@ -1,5 +1,5 @@
-import Miscelaneas from "../../otros/miscelaneas.js";
-import Modelo from "../../generales/Modelo/modelo_general.js";
+// import Miscelaneas from "../../otros/miscelaneas.js";
+import Modelo from "../../records/model/records_model.js";
 
 const Menu = {
 
@@ -17,11 +17,11 @@ const Menu = {
             const datosUsuarioMenu = document.getElementById("datosUsuarioMenu");
 
             const cedula = localStorage.getItem('cedula')
-            const res = await Modelo.traerDatosPersonalesAgente(cedula)
+            const res = await Modelo.mostrarDatos(cedula)
     
             const nombreUsuario = res.data["datos_agente"][0]["nombre"];
             const rolUsuario = res.data["datos_agente"][0]["rol"];
-            const liderEquipoUsuario = res.data["datos_agente"][0]["lider_equipo"];
+            // const liderEquipoUsuario = res.data["datos_agente"][0]["lider_equipo"];
 
             if (localStorage.getItem("rol") == "admin") {
                 this.opcionesMenuAdmin(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario)

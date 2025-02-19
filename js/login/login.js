@@ -8,7 +8,7 @@ const Vista = {
         Controlador.iniciarSesion(usuario, contraseña);
     }, 
     redirigirIndex(){
-        location.href ="../index.html"
+        location.href ="./admin.html"
     }
 
 }

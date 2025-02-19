@@ -1,12 +1,12 @@
 import config from "../../supabase/keys.js";
-import Miscelaneas from "../../otros/miscelaneas.js";
+
 
 const Modelo = {
 
-    async traerDatosPersonalesAgente(cedula) {
+    async mostrarDatos() {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/mostrar-datos-personales/" + cedula,
+            url: "http://127.0.0.1:5000/select-data/",
             headers: config.headers,
         });
         return res

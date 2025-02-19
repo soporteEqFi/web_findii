@@ -11,7 +11,7 @@ const Modelo = {
 
         const res = axios ({
             method: 'POST',
-            url:'http://127.0.0.1:5600/iniciar-sesion/',
+            url:'http://127.0.0.1:5000/iniciar-sesion/',
             headers: config.headers,
             data: datosInicio,
 

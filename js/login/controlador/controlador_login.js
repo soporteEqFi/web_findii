@@ -17,6 +17,7 @@ const Controlador = {
 
             localStorage.setItem('access_token', access_token)
             localStorage.setItem('cedula', cedula)
+            console.log(cedula)
             Vista.redirigirIndex()
 
 

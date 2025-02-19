@@ -3,7 +3,7 @@ import cuadrosEstadisticos from '../../components/cuadros-estadisticos/cuadros-e
 // import Miscelaneas from '../../otros/miscelaneas.js';
 import Modal from '../../components/Modal/modal.js'
 import swalAlert from '../../components/sweet_alert/sweetAlert.js';
-import ModeloVentas from '../../ventas/Modelo/modelo_ventas.js';
+// import ModeloVentas from '../../ventas/Modelo/modelo_ventas.js';
 import Tabla from "../../components/Tabla/tabla.js";
 
 const Vista = {
