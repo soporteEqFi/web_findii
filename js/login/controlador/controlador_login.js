@@ -13,11 +13,15 @@ const Controlador = {
 
             const access_token = res.data.access_token;
             const cedula = usuarioDatos['cedula']
-            console.log(cedula)
+            const rol = usuarioDatos['rol']
+            const empresa = usuarioDatos['empresa']
+            const logo= usuarioDatos['imagen_aliado']
+            
 
             localStorage.setItem('access_token', access_token)
             localStorage.setItem('cedula', cedula)
-            console.log(cedula)
+            localStorage.setItem("rol", rol)
+                     
             Vista.redirigirIndex()
 
 

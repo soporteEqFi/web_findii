@@ -7,16 +7,9 @@ const Controller = {
 
     async mostrarDatos(){
         try {
-            // swalAlert.mostrarPantallaDeCarga("Actualizando tabla...")
+            swalAlert.mensajeDeCarga("Actualizando tabla...")
             const response = await Modelo.mostrarDatos();
-            console.log(response)
-
-            const rol = localStorage.getItem('rol')
-            const cedula = localStorage.getItem('cedula')
-
-            console.log(rol)
-            console.log(cedula)
-
+            
             if (response.status !== 200) {
                 swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas");
                 return;
@@ -87,7 +80,7 @@ const Controller = {
                 };
             });
     
-            console.log(datosCombinados);
+            
     
             // Enviar los datos a la vista
             Vista.mostrarTodasLosDatos(datosCombinados);
@@ -103,7 +96,7 @@ const Controller = {
         // Controlador.estadisticasSemanaMesDiaActual();
         //Controlador.topMensual();
         //Controlador.topSemanal();
-        // Menu.opcionesMenu();
+        Menu.opcionesMenu();
     }
 
 }

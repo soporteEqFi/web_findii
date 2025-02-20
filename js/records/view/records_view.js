@@ -5,7 +5,7 @@ const Vista  = {
 
     mostrarTodasLosDatos(datosCombinados){
         const datos =datosCombinados
-        console.log(datos)
+        
 
         const tablaDatos = document.getElementById('tablaDatos');
         tablaDatos.innerHTML = '';
