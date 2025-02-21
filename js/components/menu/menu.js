@@ -1,6 +1,6 @@
 // import Miscelaneas from "../../otros/miscelaneas.js";
 import Modelo from "../../records/model/records_model.js";
-
+import Vista from "../../records/view/records_view.js";
 const Menu = {
 
     usuarioLogeado() {
@@ -157,7 +157,7 @@ const cerrarSesion = document.getElementById("cerrarSesion")
 
 cerrarSesion.onclick = function () {
     localStorage.clear();
-    Miscelaneas.redirigirLogin();
+    Vista.redirigirIndex();
 }
 
 
