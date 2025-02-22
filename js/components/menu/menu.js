@@ -23,35 +23,34 @@ const Menu = {
             console.log(cedula)
 
             const res = await Modelo.traerDatosPersonales(cedula)
+
+            console.log(res)
+            
             
             const nombreUsuario = res.data['nombre']
             const rolUsuario = res.data["rol"]
             const empresaNombre = res.data['empresa']
             const logo = res.data['imagen_aliado']
-            
-            console.log(nombreUsuario)
-            console.log(rolUsuario)
 
-
-            if (localStorage.getItem("rol") == "admin") {
+            if (localStorage.getItem("rol").toLowerCase() == "admin") {
                 this.opcionesMenuAdmin(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
 
-            if (localStorage.getItem("rol") == "calidad") {
+            if (localStorage.getItem("rol").toLowerCase() == "calidad") {
                 this.opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }
 
-            if (localStorage.getItem("rol") == "team leader") {
+            if (localStorage.getItem("rol").toLowerCase() == "team leader") {
                 this.opcionesMenuTeamLeader(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }
             
-            if (localStorage.getItem("rol") == "agente") {
+            if (localStorage.getItem("rol").toLowerCase() == "agente") {
                 this.opcionesMenuAgente(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }
 
         } // Este ELSE no estaba añadido, lo estoy probando 08-02-2025
         else {
-            if (localStorage.getItem("rol") == "admin") {
+            if (localStorage.getItem("rol").toLowerCase() == "admin") {
                 this.opcionesMenuAdmin(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }else{
                 this.opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, "Prueba", "rolUsuario",empresaNombre, logo)
