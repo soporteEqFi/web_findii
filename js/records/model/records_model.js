@@ -15,7 +15,7 @@ const Modelo = {
     async traerDatosPersonales(cedula) {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/data-user/" + cedula,
+            url: "http://127.0.0.1:5000/get-user-info/" + cedula,
             headers: config.headers,
         });
         return res
