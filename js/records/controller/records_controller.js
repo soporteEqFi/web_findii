@@ -219,7 +219,7 @@ const Controller = {
 
         try {
             const cedula = localStorage.getItem('cedula')
-            const datos_agente = await userModel.getUserInfo(asesor)
+            const datos_agente = await userModel.get_agent_info(asesor)
             
             console.log("los datos del agente son:")
             console.log(datos_agente)
