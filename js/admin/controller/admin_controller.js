@@ -1,48 +1,89 @@
 import Vista from "../view/admin_view.js";
-import Modelo from "../model/admin_model.js";
-import ModeloVentas from "../../ventas/Modelo/modelo_ventas.js";
 import swalAlert from '../../components/sweet_alert/sweetAlert.js';
 import ModeloTabla from "../../components/Tabla/Modelo/modelo_tabla.js";
-// import Miscelaneas from "../../otros/miscelaneas.js";
 import Menu from "../../components/menu/menu.js";
 
 const Controlador = {
 
-    async mostrarTodasLasVentas() {
+    async insertarDatos() {
+        const { nombre_completo, tipo_documento, numero_documento, fecha_nacimiento, 
+                numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
+                personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
+                estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
+                direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
+                valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
+                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion } = Vista.enviarDatosFormulario()
+
+        console.log('Nombre completo:', nombre_completo);
+        console.log('Tipo documento:', tipo_documento); 
+        console.log('Número documento:', numero_documento);
+        console.log('Fecha nacimiento:', fecha_nacimiento);
+        console.log('Número celular:', numero_celular);
+        console.log('Correo:', correo_electronico);
+        console.log('Nivel estudio:', nivel_estudio);
+        console.log('Profesión:', profesion);
+        console.log('Estado civil:', estado_civil);
+        console.log('Personas a cargo:', personas_a_cargo);
+        console.log('Dirección:', direccion_residencia);
+        console.log('Tipo vivienda:', tipo_vivienda);
+        console.log('Barrio:', barrio);
+        console.log('Departamento:', departamento);
+        console.log('Estrato:', estrato);
+        console.log('Ciudad gestión:', ciudad_gestion);
+        console.log('Actividad económica:', actividad_economica);
+        console.log('Empresa:', empresa_labora);
+        console.log('Fecha vinculación:', fecha_vinculacion);
+        console.log('Dirección empresa:', direccion_empresa);
+        console.log('Teléfono empresa:', telefono_empresa);
+        console.log('Tipo contrato:', tipo_contrato);
+        console.log('Cargo:', cargo_actual);
+        console.log('Ingresos:', ingresos);
+        console.log('Valor inmueble:', valor_inmueble);
+        console.log('Cuota inicial:', cuota_inicial);
+        console.log('% a financiar:', porcentaje_financiar);
+        console.log('Total egresos:', total_egresos);
+        console.log('Total activos:', total_activos);
+        console.log('Total pasivos:', total_pasivos);
+        console.log('Tipo crédito:', tipo_credito);
+        console.log('Plazo meses:', plazo_meses);
+        console.log('Segundo titular:', segundo_titular);
+        console.log('Observación:', observacion);
+
+                
+
         try {
-            swalAlert.mostrarPantallaDeCarga("Actualizando tabla...")
-            const response = await ModeloVentas.traerTodasLasVentas();
-            if (response.status == 200) {
-                Vista.mostrarTodasLasVentas(response);
-                Swal.close();
-            } else {
-                swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas")
-            }
+            // const cedula = localStorage.getItem('cedula')
+            // const datos_agente = await ModeloGeneral.traerDatosPersonalesAgente(cedula)
+
+            // const nombreAgente = datos_agente.data.apodo;
+            // const liderEquipo = datos_agente.data.lider_equipo;
+            // const liderResponsable = datos_agente.data.lider_responsable;
+
+            // const res = await ModeloVentas.insertarVenta(
+            //     nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,
+            //     numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
+            //     personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
+            //     estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
+            //     direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
+            //     valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
+            //     total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion,
+            //     cedula, liderEquipo, liderResponsable, nombreAgente
+            // )
+
+            // if (res.status == 200) {
+            //     swalAlert.mostrarAlertaSatisfactorio("Se agregó el registro correctamente");
+            //     Miscelaneas.recargarPagina(1000)
+            // } else {
+            //     swalAlert.mostrarMensajeError("Hubo un error al insertar el registro")
+            // }
+
         } catch (error) {
             console.log(error)
-            Swal.close();
+            swalAlert.mostrarMensajeError("Error al insertar los datos")
         }
     },
 
-    async estadisticasSemanaMesDiaActual() {
-        const response_dia_actual = await ModeloVentas.ventasDiaActual();
-        const response_mes_actual = await ModeloVentas.ventasMesActual();
-        const ventas_mes_actual = response_mes_actual.data["ventas_mes_actual"].length
-        const ventas_dia_actual = response_dia_actual.data["ventas_dia_actual"].length
-
-
-
-/*
-        if (response_dia_actual.data['venta_dia_status'] == "error") {
-            var cant_ventas_dia_actual = 0
-        } else {
-            var cant_ventas_dia_actual = response_dia_actual.data['cant_ventas_dia_actual']
-        }
-*/
-        Vista.datosEstadisticos(ventas_mes_actual, ventas_dia_actual);
-        
-    },
-
+    
     async eliminarVenta() {
         try {
             const id = Vista.eliminarVenta();
@@ -98,34 +139,6 @@ const Controlador = {
 
         } catch (error) {
             console.log(error)
-            swalAlert.mostrarMensajeError("Revisa que haya un rango de fechas válido")
-        }
-
-    },
-
-    async topMensual() {
-        const res = await ModeloVentas.ventasMesActual()
-        Vista.topAgentesMes(res)
-        Vista.topLideresMes(res)
-    },
-
-    async topSemanal() {
-        const res = await ModeloVentas.ventaAgenteSemanaActual()
-        Vista.topAgentesSemana(res)
-    },
-
-    async filtrarTabla() {
-        try {
-            swalAlert.mostrarPantallaDeCarga("Filtrando tabla...")
-            const { columnaBuscar, textoBuscar } = Vista.filtrarTabla()
-            const res = await ModeloTabla.filtrarTabla(columnaBuscar, textoBuscar)
-            Vista.mostrarTodasLasVentas(res);
-            Vista.mostrarFiltrosActivos(columnaBuscar, textoBuscar);
-            Swal.close();
-
-        } catch (error) {
-            console.log(error)
-            Swal.close(); // Este cierra el Swal de carga para abrir el de error
             swalAlert.mostrarMensajeError("Revisa que haya un rango de fechas válido")
         }
 
@@ -197,7 +210,6 @@ const Controlador = {
     },
 
     iniciar() {
-        Controlador.mostrarTodasLasVentas();
         // Controlador.estadisticasSemanaMesDiaActual();
         //Controlador.topMensual();
         //Controlador.topSemanal();
