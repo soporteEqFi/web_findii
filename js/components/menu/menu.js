@@ -20,13 +20,8 @@ const Menu = {
 
             const cedula = localStorage.getItem('cedula')
             
-            console.log(cedula)
-
             const res = await Modelo.traerDatosPersonales(cedula)
 
-            console.log(res)
-            
-            
             const nombreUsuario = res.data['nombre']
             const rolUsuario = res.data["rol"]
             const empresaNombre = res.data['empresa']
