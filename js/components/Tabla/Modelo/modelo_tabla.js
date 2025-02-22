@@ -58,8 +58,6 @@ const ModeloTabla = {
           fecha_inicial: fechaFormateadaInicio,
           fecha_final: fechaFormateadaFinal
         }
-
-        console.log(datosEnviar)
     
         const res = await axios({
           method: "POST",
@@ -76,7 +74,6 @@ const ModeloTabla = {
             columna_buscar: columnaBuscarValor,
             texto_buscar: textoBuscar
         }
-        
 
         const res = await axios({
             method: "POST",
@@ -84,6 +81,7 @@ const ModeloTabla = {
             headers: config.headers,
             data: datosEnviar
         })
+
         return res
     },
 
