@@ -10,7 +10,7 @@ const Controller = {
         try {
             swalAlert.mensajeDeCarga("Actualizando tabla...")
             const response = await Modelo.mostrarDatos();
-            
+            console.log(response)
             if (response.status !== 200) {
                 swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas");
                 return;
@@ -77,7 +77,10 @@ const Controller = {
                     //agente
 
                     agente: agente.nombre || "N/A",
-                    rol: agente.rol || "N/A"
+                    rol: agente.rol || "N/A",
+
+                    banco: solicitudInfo.banco || "N/A",
+                    created_at: solicitudInfo.created_at || "N/A"
                 };
             });
     
@@ -85,7 +88,6 @@ const Controller = {
     
             // Enviar los datos a la vista
             Vista.mostrarTodasLosDatos(datosCombinados);
-            Vista.mostrarFiltrosActivos(columnaBuscar, textoBuscar);
 
             Swal.close();
         } catch (error) {
@@ -108,17 +110,15 @@ const Controller = {
             
             // Extraer registros asegurando que sean arrays
             const registros = response.data.registros || {};
-            const solicitantes = registros.solicitantes ?? [];
-            const agents = registros.agents_info ?? [];
-            const activity = registros.economic_activity ?? [];
-            const financial = registros.financial_info ?? [];
-            const location = registros.location ?? [];
-            const product = registros.product ?? [];
-            const solicitud = registros.solicitud ?? [];
+            const solicitantes = registros.SOLICITANTES ?? [];
+            const activity = registros.ACTIVIDAD_ECONOMICA ?? [];
+            const financial = registros.INFORMACION_FINANCIERA ?? [];
+            const location = registros.UBICACION ?? [];
+            const product = registros.PRODUCTO_SOLICITADO ?? [];
+            const solicitud = registros.SOLICITUDES ?? [];
 
         // Combinar datos por cada solicitante
             const datosCombinados = solicitantes.map(solicitante => {
-            const agente = agents.find(a => a.asesor_id === solicitante.solicitante_id) || {};
             const actividad = activity.find(a => a.solicitante_id === solicitante.solicitante_id) || {};
             const finanzas = financial.find(f => f.solicitante_id === solicitante.solicitante_id) || {};
             const ubicacion = location.find(l => l.solicitante_id === solicitante.solicitante_id) || {};
@@ -128,6 +128,7 @@ const Controller = {
                 return {
                     //info solicitante
                     id_solicitante: solicitante.solicitante_id || "N/A",
+                    
                     nombre: solicitante.nombre_completo || "N/A",
                     numero_documento: solicitante.numero_documento || "N/A",
                     correo: solicitante.correo_electronico || "N/A",
@@ -165,18 +166,19 @@ const Controller = {
                     observacion: producto.observacion || "N/A",
                     segundo_titular: producto.segundo_titular || "N/A",
                     //agente
+                    banco: solicitudInfo.banco || "N/A",
+                    created_at: solicitudInfo.created_at || "N/A"
 
-                    agente: agente.nombre || "N/A",
-                    rol: agente.rol || "N/A"
+                  
+
                 };
+                
             });
-    
+         
             console.log(datosCombinados)
-    
             // Enviar los datos a la vista
             Vista.mostrarTodasLosDatos(datosCombinados);
-            // Vista.mostrarTodasLosDatos(res);
-            // Vista.mostrarFiltrosActivos(columnaBuscar, textoBuscar);
+            Vista.mostrarFiltrosActivos(columnaBuscar, textoBuscar);
             Swal.close();
 
         } catch (error) {

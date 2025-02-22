@@ -76,6 +76,7 @@ const ModeloTabla = {
             columna_buscar: columnaBuscarValor,
             texto_buscar: textoBuscar
         }
+        
 
         const res = await axios({
             method: "POST",
