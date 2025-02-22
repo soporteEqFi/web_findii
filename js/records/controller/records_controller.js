@@ -101,12 +101,17 @@ const Controller = {
             swalAlert.mensajeDeCarga("Filtrando tabla...")
             const { columnaBuscar, textoBuscar } = Vista.filtrarTabla()
             const response = await ModeloTabla.filtrarTabla(columnaBuscar, textoBuscar)
-            console.log(response)
+            console.log(response.data["error"])
 
-            if (response.status !== 200) {
-                swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas");
+            if (response.status == 204) {
+                swalAlert.mostrarMensajeError("No se encontraron resultados. Verifica los datos ingresados")
                 return;
             }
+
+            // if (response.status !== 200) {
+            //     swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas");
+            //     return;
+            // }
             
             // Extraer registros asegurando que sean arrays
             const registros = response.data.registros || {};
