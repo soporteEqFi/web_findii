@@ -73,6 +73,11 @@
                                     <button id="descargarVentas" class="btn-black">Exportar <i
                                             class="fa-solid fa-file-arrow-down"></i></button>
                                 </div>
+
+                                <div class="">
+                                    <button class="btn-success" id="botonAñadirVenta"><i class="fa-solid fa-plus"></i>Añadir
+                                        venta</button>
+                                </div>
     
                             </div>
     
@@ -162,240 +167,27 @@
                                 </div>
                             </div>
     
-                            <div class="modal" id="targetModalAgregarVenta">
+                            <div class="modal" id="targetModalIngresarventa">
                                 <div class="modal-contenido">
-                                    <div class="titulo modal-cabecera">
-                                        <a><i class="fa-solid fa-remove cerrar-modal-agregar-venta"></i></a>
+                                    <div class="titulo modal-cabecera" id="modalCabeceraAñadirVenta">
+                                        <a><i class="fa-solid fa-remove cerrar-modal-ingresar-venta"></i></a>
                                     </div>
-    
-                                    <div class="modal-cuerpo" id="modalCuerpo">
-                                        <div class="campos">
-    
-                                            <div class="informacion-agente-venta">
-                                                <h3>Informacion agente</h3>
-                                            </div>
-    
-                                            <div class="informacion-venta">
-    
-                                                <div class="contenido-venta">
-                                                    <h3>Informacion venta</h3>
-    
-                                                    <div class="campo compania">
-                                                        <div class="texto">
-                                                            <p>Compañia:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoCompañiaEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo dni">
-                                                        <div class="texto">
-                                                            <p>DNI:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoDniEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo nombre">
-                                                        <div class="texto">
-                                                            <p>Nombre:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoNombreEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo telefono">
-                                                        <div class="texto">
-                                                            <p>Telefono:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoTelefonoEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo correo">
-                                                        <div class="texto">
-                                                            <p>Correo:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoCorreoEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo direccion">
-                                                        <div class="texto">
-                                                            <p>Dirección:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoDireccionEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo fecha-nacimiento">
-                                                        <div class="texto">
-                                                            <p>Fecha de nacimiento:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoFechaNacimientoEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-    
-                                                    <div class="campo cups-luz">
-                                                        <div class="texto">
-                                                            <p>CUPS LUZ:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoCupsLuzEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo cups-gas">
-                                                        <div class="texto">
-                                                            <p>CUPS GAS:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoCupsGasEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo iban">
-                                                        <div class="texto">
-                                                            <p>IBAN:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoIbanEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo numero-contrato">
-                                                        <div class="texto">
-                                                            <p>Numero de Contrato:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoNumeroContratoEditar"></p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo potencia">
-                                                        <div class="texto">
-                                                            <p>POTENCIA:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoPotenciaEditar">${dato['potencia']}</p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo peajeGas">
-                                                        <div class="texto">
-                                                            <p>PEAJE GAS:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <p id="campoPeajeGasEditar">${dato['peaje_gas']}</p>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="campo descripcion-venta">
-                                                        <div class="texto">
-                                                            <p>Observaciones venta:</p>
-                                                        </div>
-                                                        <div class="entrada">
-                                                            <textarea id="observacionesVenta"
-                                                                disabled>${dato['observaciones_venta']}</textarea>
-                                                        </div>
-                                                    </div>
-    
-    
-                                                </div>
-    
-                                                <div class="contenido-editable">
-    
-                                                </div>
-    
-                                            </div>
-    
-                                        </div>
+        
+                                    <div class="modal-cuerpo" id="modalCuerpoAñadirVenta">
+        
                                     </div>
-    
+        
                                     <div class="botones modal-footer">
-                                        <button id="botonAgregarVenta" class="btn-success">Agregar venta</button>
+                                        <button id="botonModalAgregarVenta" class="btn-success">Agregar</button>
                                     </div>
                                 </div>
                             </div>
     
                         </div>
     
-                        <!-- <div class="posiciones">
-                            <h1>TOP</h1>
-                            <div class="tarjetas">
     
-                                <div class="tarjeta top-agentes-mes">
-                                    <div class="cabecera">
-                                        <div class="icono">
-                                            <i class="fa-solid fa-people-group"></i>
-                                        </div>
-                                        <div class="titulo">
-                                            <p>Top agentes mes</p>
-                                        </div>
-                                    </div>
-    
-                                    <div class="cuerpo">
-                                        <div class="descripcion" id="topAgentesMesContenedor">
-                                            <ul id="listaTopAgentesMes" class="lista">
-                                            </ul>
-                                        </div>
-                                    </div>
-    
-                                </div>
-    
-                                <div class="tarjeta top-lideres-mes">
-                                    <div class="cabecera">
-                                        <div class="icono">
-                                            <i class="fa-solid fa-people-group"></i>
-                                        </div>
-                                        <div class="titulo">
-                                            <p>Top lideres mes</p>
-                                        </div>
-                                    </div>
-    
-                                    <div class="cuerpo">
-                                        <div class="descripcion" id="topLideresMesContenedor">
-                                            <ul id="listaTopLideresMes" class="lista">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="tarjeta top-agentes-semana">
-                                    <div class="cabecera">
-                                        <div class="icono">
-                                            <i class="fa-solid fa-people-group"></i>
-                                        </div>
-                                        <div class="titulo">
-                                            <p>Top agentes semana</p>
-                                        </div>
-                                    </div>
-    
-                                    <div class="cuerpo">
-                                        <div class="descripcion" id="topAgentesSemanaContenedor">
-                                            <ul id="listaTopAgentesSemana" class="lista">
-                                            </ul>
-                                        </div>
-                                    </div>
-    
-                                </div>
-    
-                            </div>
-    
-    
-                        </div> -->
-
                     </div>
                     
-
                 </div>
 
             </section>
