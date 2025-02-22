@@ -22,8 +22,6 @@ const Modelo = {
     },
 
     async insertData(data) {  
-
-        console.log(data)
         
         const data_to_send = {
             nombre_completo: data.nombre_completo,
@@ -64,14 +62,12 @@ const Modelo = {
             asesor_usuario: data.asesor
         };
 
-        
-
         console.log(data_to_send)
         const res = axios({
             method: "POST",
             url: "http://127.0.0.1:5000/add-record/",
             headers: config.headers,
-            data: data
+            data: data_to_send
         });
         return res
     },
