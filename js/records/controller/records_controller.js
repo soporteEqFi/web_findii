@@ -3,6 +3,10 @@ import swalAlert from '../../components/sweet_alert/sweetAlert.js';
 import ModeloTabla from "../../components/Tabla/Modelo/modelo_tabla.js";
 import Menu from "../../components/menu/menu.js";
 import Vista from "../view/records_view.js";
+import userModel from "../../user/user_model.js";
+import ModeloVentas from "../model/records_model.js";
+import dateUtils from "../../utils/date_utils.js";
+
 
 const Controller = {
 
@@ -193,6 +197,59 @@ const Controller = {
         }
 
     },
+
+    async insertarDatos() {
+        const { nombre_completo, tipo_documento, numero_documento, fecha_nacimiento, 
+                numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
+                personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
+                estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
+                direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
+                valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
+                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco, asesor } = Vista.enviarDatosFormulario()
+
+        console.log({
+            nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,
+            numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
+            personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
+            estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
+            direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
+            valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
+            total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco, asesor
+        });
+
+        try {
+            const cedula = localStorage.getItem('cedula')
+            const datos_agente = await userModel.getUserInfo(asesor)
+            
+            console.log("los datos del agente son:")
+            console.log(datos_agente)
+            const fechaActual = dateUtils.get_actual_date()
+
+            console.log(fechaActual)
+
+            const res = await ModeloVentas.insertData({
+                nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,
+                numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
+                personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
+                estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
+                direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
+                valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
+                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco, asesor
+            })
+
+            if (res.status == 200) {
+                swalAlert.mostrarAlertaSatisfactorio("Se agregó el registro correctamente");
+                // Miscelaneas.recargarPagina(1000)
+            } else {
+                swalAlert.mostrarMensajeError("Hubo un error al insertar el registro")
+            }
+
+        } catch (error) {
+            console.log(error)
+            swalAlert.mostrarMensajeError("Error al insertar los datos")
+        }
+    },
+
 
     iniciar() {
         Controller.mostrarDatos();
