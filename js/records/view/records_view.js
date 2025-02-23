@@ -1,8 +1,8 @@
 import Controller from "../controller/records_controller.js";
 import Modal from '../../components/Modal/modal.js'
 import swalAlert from '../../components/sweet_alert/sweetAlert.js';
-import modalContent from '../../components/Modal/modal_views.js';
 import Tabla from "../../components/Tabla/tabla.js";
+import Modales from '../../components/Modal/modal_views.js';
 
 const Vista  = {
 
@@ -14,7 +14,7 @@ const Vista  = {
 
         // Definir las columnas que deseas mostrar
         // const columnasAMostrar = ['nombre','numero_documento','profesion','nivel_estudio','correo','numero_celular','personas_a_cargo','direccion','ciudad_gestion','departamento','barrio','actividad_economica','empresa_labora', 'direccion_empresa','telefono_empresa', 'tipo_de_contrato','cargo_actual', 'ingresos', 'egresos','cuota_inicial', 'producto_solicitado','plazo_meses','observacion','segundo_titular', 'banco', 'created_at'];
-        const columnasAMostrar = ['nombre','numero_documento', 'correo','numero_celular', 'ciudad_gestion', 'producto_solicitado', 'banco'];
+        const columnasAMostrar = ['nombre','numero_documento', 'correo','numero_celular', 'ciudad_gestion', 'producto_solicitado', 'banco', "estado"];
 
         // Crear encabezado
         const encabezadoRow = document.createElement('tr');
@@ -33,8 +33,78 @@ const Vista  = {
                 const celda = document.createElement('td');
                 celda.textContent = dato[columna];
 
+                // Aplicar clases de estado según el valor
+                if (columna === 'estado') {
+                    const estado = dato[columna];
+                    const estadoSelect = document.createElement('select');
+                    estadoSelect.setAttribute('id', 'actualizarEstado');
+                    
+                    const estadosPosibles = [
+                        estado, 'Pendiente', 'Desembolso', 'Aprobado'
+                    ];
+
+                    estadosPosibles.forEach(estadoOpt => {
+                        const option = document.createElement('option');
+                        option.value = estadoOpt;
+                        option.textContent = estadoOpt;
+                        estadoSelect.appendChild(option);
+                    });
+
+                    estadoSelect.value = estado;
+
+                    // Aplicar clases de color según el estado
+                    if (estado === 'activa' || estado === 'firmado') {
+                        estadoSelect.classList.add('estado-verde');
+                    } else if (estado === 'recuperada' || estado === 'temporal' || estado === 'verificado') {
+                        estadoSelect.classList.add('estado-azul');
+                    } else if (estado === 'pendiente') {
+                        estadoSelect.classList.add('estado-amarillo');
+                    } else if (estado === 'devuelta' || estado === 'baja' || estado === 'cancelado') {
+                        estadoSelect.classList.add('estado-rojo');
+                    }
+
+                    estadoSelect.addEventListener('change', async (event) => {
+                        try {
+                            const nuevoEstado = event.target.value;
+                            swalAlert.mostrarPantallaDeCarga("Actualizando estado...");
+                            // const cedulaUsuario = localStorage.getItem('cedula');
+                            // const res = await ModeloVentas.editarEstadoDesdeTabla(dato.id_solicitante, nuevoEstado, cedulaUsuario);
+                            // if (res.status == 200) {
+                            //     Controller.mostrarDatos();
+                            //     Swal.close();
+                            // }
+                        } catch (error) {
+                            Swal.close();
+                            console.error(error);
+                            swalAlert.mostrarMensajeError('Error al actualizar el estado');
+                        }
+                    });
+
+                    celda.textContent = '';
+                    celda.appendChild(estadoSelect);
+                }
+
                 fila.appendChild(celda);
             }
+
+            // Agregar botón de editar
+            const celdaAcciones = document.createElement('td');
+            celdaAcciones.classList.add('no-padding');
+            const botonEditar = document.createElement('button');
+            const iconoEditar = document.createElement('i');
+            iconoEditar.classList.add('fa-solid', 'fa-pen-to-square');
+            iconoEditar.setAttribute('id', 'abrirModalInformacionDatos');
+            
+            botonEditar.addEventListener('click', () => {
+                Modal.modalCero("targetModalInformacionDatos", "cerrar-modal-informacion-datos");
+                const modalCuerpo = document.getElementById('modalCuerpo');
+                Modales.editSellModal(modalCuerpo, dato);
+            });
+
+            botonEditar.appendChild(iconoEditar);
+            celdaAcciones.appendChild(botonEditar);
+            fila.appendChild(celdaAcciones);
+
             tablaDatos.appendChild(fila);
         });
         
@@ -211,7 +281,7 @@ const botonAñadirVenta = document.getElementById('botonAñadirVenta');
 botonAñadirVenta.onclick = function () {
     Modal.modalCero("targetModalIngresarventa", "cerrar-modal-ingresar-venta")
     const modalCuerpo = document.getElementById('modalCuerpoAñadirVenta');
-    modalContent(modalCuerpo, "sells_content")
+    Modales.modalContent(modalCuerpo, "sells_content")
     
     // //AGREGAR NUEVOS CAMPOS
     // const form = document.getElementById('companiaSeccion');
