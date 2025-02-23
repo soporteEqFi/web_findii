@@ -7,7 +7,7 @@ import Modales from '../../components/Modal/modal_views.js';
 const Vista  = {
 
     mostrarTodasLosDatos(datosCombinados){
-        const datos =datosCombinados
+        const datos = datosCombinados
        
         const tablaDatos = document.getElementById('tablaDatos');
         tablaDatos.innerHTML = '';
@@ -28,6 +28,7 @@ const Vista  = {
            
         // Crear filas de datos
         datos.forEach(dato => {
+            console.log(dato)
             const fila = document.createElement('tr');
             for (const columna of columnasAMostrar) {
                 const celda = document.createElement('td');
@@ -282,7 +283,7 @@ botonAñadirVenta.onclick = function () {
     Modal.modalCero("targetModalIngresarventa", "cerrar-modal-ingresar-venta")
     const modalCuerpo = document.getElementById('modalCuerpoAñadirVenta');
     Modales.modalContent(modalCuerpo, "sells_content")
-    
+
     // //AGREGAR NUEVOS CAMPOS
     // const form = document.getElementById('companiaSeccion');
     // const combobox = document.getElementById('compania');
