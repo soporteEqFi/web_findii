@@ -143,26 +143,26 @@ const Vista  = {
     },
 
 
-    filtrarTabla() {
-        const columnaBuscarComboBox = document.getElementById('columnaBuscar');
-        const textoBuscar = document.getElementById('textoBuscar').value;
+    // filtrarTabla() {
+    //     const columnaBuscarComboBox = document.getElementById('columnaBuscar');
+    //     const textoBuscar = document.getElementById('textoBuscar').value;
 
-        columnaBuscarComboBox.addEventListener('change', () => {
-            const estado = columnaBuscarComboBox.value;
+    //     columnaBuscarComboBox.addEventListener('change', () => {
+    //         const estado = columnaBuscarComboBox.value;
 
-            if (estado === "sin filtros") {
-                // Miscelaneas.recargarPagina(500)
-                let textoBuscar = document.getElementById('textoBuscar');
-                textoBuscar.value = ""
-            }
+    //         if (estado === "sin filtros") {
+    //             // Miscelaneas.recargarPagina(500)
+    //             let textoBuscar = document.getElementById('textoBuscar');
+    //             textoBuscar.value = ""
+    //         }
 
-        })
+    //     })
 
-        const columnaBuscar = columnaBuscarComboBox.value;
+    //     const columnaBuscar = columnaBuscarComboBox.value;
 
-        return { columnaBuscar, textoBuscar }
+    //     return { columnaBuscar, textoBuscar }
 
-    },
+    // },
 
     mostrarFiltrosActivos(filtroActivo, filtroValor) {
         const contenedorFiltrosActivos = document.getElementById('contenedorFiltrosActivos');
