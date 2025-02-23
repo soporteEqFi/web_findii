@@ -43,6 +43,8 @@ const Controller = {
                     //info solicitante
                     id_solicitante: solicitante.solicitante_id || "N/A",
                     nombre: solicitante.nombre_completo || "N/A",
+                    tipo_documento: solicitante.tipo_documento || "N/A",
+                    fecha_nacimiento: solicitante.fecha_nacimiento || "N/A",
                     numero_documento: solicitante.numero_documento || "N/A",
                     correo: solicitante.correo_electronico || "N/A",
                     profesion: solicitante.profesion ||"N/A",
