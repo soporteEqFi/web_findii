@@ -1,4 +1,3 @@
-import Modelo from "../model/records_model.js";
 import swalAlert from '../../components/sweet_alert/sweetAlert.js';
 import Menu from "../../components/menu/menu.js";
 import Vista from "../view/records_view.js";
@@ -12,7 +11,7 @@ const Controller = {
     async mostrarDatos(){
         try {
             swalAlert.mensajeDeCarga("Actualizando tabla...")
-            const response = await Modelo.mostrarDatos();
+            const response = await ModeloVentas.mostrarDatos();
             
             if (response.status !== 200) {
                 swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas");
@@ -38,6 +37,8 @@ const Controller = {
             const producto = product.find(p => p.solicitante_id === solicitante.solicitante_id) || {};
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
 
+            console.log(producto)
+
                 return {
                     //info solicitante
                     id_solicitante: solicitante.solicitante_id || "N/A",
@@ -57,6 +58,7 @@ const Controller = {
                     telefono_empresa: actividad.telefono_empresa || "N/A",
                     tipo_de_contrato: actividad.tipo_contrato || "N/A",
                     fecha_vinculacion: actividad.fecha_vinculacion || "N/A",
+
                     //Finanzas
                     ingresos: finanzas.ingresos || "N/A",
                     egresos: finanzas.egresos || "N/A",
@@ -65,25 +67,29 @@ const Controller = {
                     total_activos: finanzas.total_activos || "N/A",
                     total_pasivos: finanzas.total_pasivos || "N/A",
                     valor_inmueble: finanzas.valor_inmueble || "N/A",
+
                     //location
                     ciudad_gestion: ubicacion.ciudad_gestion || "N/A",
                     departamento: ubicacion.departamento || "N/A",
                     direccion: ubicacion.direccion_residencia || "N/A",
                     barrio: ubicacion.barrio || "N/A",
                     estrato: ubicacion.estrato || "N/A",
+
                     //product
                     producto_solicitado: producto.tipo_credito || "N/A",
                     observacion: producto.observacion || "N/A",
                     plazo_meses: producto.plazo_meses || "N/A",
                     observacion: producto.observacion || "N/A",
                     segundo_titular: producto.segundo_titular || "N/A",
-                    //agente
+                    estado: producto.estado || "N/A",
 
+                    //agente
                     agente: agente.nombre || "N/A",
                     rol: agente.rol || "N/A",
 
+                    //banco
                     banco: solicitudInfo.banco || "N/A",
-                    created_at: solicitudInfo.created_at || "N/A"
+                    created_at: solicitudInfo.created_at || "N/A",
                 };
             });
     
