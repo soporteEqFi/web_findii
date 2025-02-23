@@ -18,23 +18,6 @@ const ModeloTabla = {
         return res
     },
 
-    async mostrarVentasPorFechaTeamLeader(fechaFormateada, liderEquipo) {
-
-        const datos_enviar = {
-            fecha_venta: fechaFormateada,
-            lider_equipo: liderEquipo
-        }
-
-        const res = await axios({
-            method: "POST",
-            url: "http://127.0.0.1:5000/mostrar-por-fecha-leader/",
-            headers: config.headers,
-            data: datos_enviar
-
-        });
-        return res
-    },
-
     async mostrarPorIntervalo(fechaFormateadaInicio, fechaFormateadaFinal) {
 
         const datosEnviar = {

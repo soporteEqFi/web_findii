@@ -2,12 +2,13 @@ import Controller from "../controller/records_controller.js";
 import Modal from '../../components/Modal/modal.js'
 import swalAlert from '../../components/sweet_alert/sweetAlert.js';
 import modalContent from '../../components/Modal/modal_views.js';
+import Tabla from "../../components/Tabla/tabla.js";
 
 const Vista  = {
 
     mostrarTodasLosDatos(datosCombinados){
         const datos =datosCombinados
-        console.log(datos)
+       
         const tablaDatos = document.getElementById('tablaDatos');
         tablaDatos.innerHTML = '';
 
@@ -161,10 +162,6 @@ const Vista  = {
 
         return { columnaBuscar, textoBuscar }
 
-    },
-
-    redirigirIndex(){
-        location.href ="./login.html"
     },
 
     mostrarFiltrosActivos(filtroActivo, filtroValor) {
@@ -384,5 +381,11 @@ botonModalAgregarVenta.onclick = function () {
 // Boton que permite filtrar los registros según una columna y texto a buscar
 const btnFiltrarTabla = document.getElementById('btnFiltrarTabla');
 btnFiltrarTabla.onclick = function () {
-    Controller.filtrarTabla();
+    Tabla.filtrarTabla();
 }
+
+// Boton que permite descargar las ventas de la BD
+const descargarVentas = document.getElementById('descargarVentas');
+descargarVentas.onclick = async function () {
+    Controller.descargarVentas()
+};

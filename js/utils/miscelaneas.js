@@ -1,7 +1,7 @@
 const Miscelaneas = {
 
     redirigirLogin() {
-        location.href = ("../index.html");
+        location.href = ("./login.html");
     },
 
     redirigirAdmin() {
@@ -22,7 +22,7 @@ const Miscelaneas = {
 
     */
     redirigirAIndex() {
-        location.href = ("./pages/agentes.html");
+        location.href = ("../index.html");
     },
 
 

@@ -12,15 +12,6 @@ const Modelo = {
         return res
     },
 
-    async traerDatosPersonales(cedula) { //quitar esta función
-        const res = axios({
-            method: "GET",
-            url: "http://127.0.0.1:5000/get-user-info/" + cedula,
-            headers: config.headers,
-        });
-        return res
-    },
-
     async insertData(data) {  
         
         const data_to_send = {
@@ -68,6 +59,16 @@ const Modelo = {
             url: "http://127.0.0.1:5000/add-record/",
             headers: config.headers,
             data: data_to_send
+        });
+        return res
+    },
+
+    async descargarCSV() {
+        const res = axios({
+            method: "GET",
+            url: "http://127.0.0.1:5000/descargar-ventas/",
+            headers: config.headers,
+            responseType: 'arraybuffer',  // Indica a Axios que esperamos una respuesta binaria
         });
         return res
     },

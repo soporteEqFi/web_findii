@@ -1,6 +1,6 @@
-// import Miscelaneas from "../../otros/miscelaneas.js";
-import Modelo from "../../records/model/records_model.js";
-import Vista from "../../records/view/records_view.js";
+import Model from "../../user/user_model.js";
+import Miscelaneas from "../../utils/miscelaneas.js";
+
 const Menu = {
 
     usuarioLogeado() {
@@ -20,8 +20,8 @@ const Menu = {
 
             const cedula = localStorage.getItem('cedula')
             
-            const res = await Modelo.traerDatosPersonales(cedula)
-
+            const res = await Model.getUserInfo(cedula)
+            
             const nombreUsuario = res.data['nombre']
             const rolUsuario = res.data["rol"]
             const empresaNombre = res.data['empresa']
@@ -151,7 +151,7 @@ const cerrarSesion = document.getElementById("cerrarSesion")
 
 cerrarSesion.onclick = function () {
     localStorage.clear();
-    Vista.redirigirIndex();
+    Miscelaneas.redirigirLogin()
 }
 
 
