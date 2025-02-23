@@ -7,7 +7,7 @@
                     <p>Nombre Completo:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Nombre Completo" id="nombre_completo" />
+                    <input type="text" placeholder="Nombre Completo" id="nombre_completo" value="{{nombre_completo}}" />
                 </div>
             </div>
 
@@ -16,7 +16,7 @@
                     <p>Tipo de Documento:</p>
                 </div>
                 <div class="entrada">
-                    <select id="tipo_documento">
+                    <select id="tipo_documento" value="{{tipo_documento}}">
                         <option value="CC">Cédula de Ciudadanía</option>
                         <option value="CE">Cédula de Extranjería</option>
                         <option value="PA">Pasaporte</option>
@@ -29,16 +29,7 @@
                     <p>Número de Documento:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Número de Documento" id="numero_documento" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Fecha de Nacimiento:</p>
-                </div>
-                <div class="entrada">
-                    <input type="date" id="fecha_nacimiento" />
+                    <input type="text" placeholder="Número de Documento" id="numero_documento" value="{{numero_documento}}" />
                 </div>
             </div>
 
@@ -47,7 +38,7 @@
                     <p>Número Celular:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Número Celular" id="numero_celular" />
+                    <input type="text" placeholder="Número Celular" id="numero_celular" value="{{numero_celular}}" />
                 </div>
             </div>
 
@@ -56,55 +47,7 @@
                     <p>Correo Electrónico:</p>
                 </div>
                 <div class="entrada">
-                    <input type="email" placeholder="Correo Electrónico" id="correo_electronico" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Nivel de Estudio:</p>
-                </div>
-                <div class="entrada">
-                    <select id="nivel_estudio">
-                        <option value="Primaria">Primaria</option>
-                        <option value="Secundaria">Secundaria</option>
-                        <option value="Técnico">Técnico</option>
-                        <option value="Profesional">Profesional</option>
-                        <option value="Postgrado">Postgrado</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Profesión:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Profesión" id="profesion" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Estado Civil:</p>
-                </div>
-                <div class="entrada">
-                    <select id="estado_civil">
-                        <option value="Soltero">Soltero</option>
-                        <option value="Casado">Casado</option>
-                        <option value="Divorciado">Divorciado</option>
-                        <option value="Viudo">Viudo</option>
-                        <option value="Union Libre">Unión Libre</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Estrato:</p>
-                </div>
-                <div class="entrada">
-                    <input type="number" placeholder="Estrato" id="estrato" />
+                    <input type="email" placeholder="Correo Electrónico" id="correo_electronico" value="{{correo_electronico}}" />
                 </div>
             </div>
 
@@ -113,86 +56,17 @@
                     <p>Ciudad de Gestión:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Ciudad de Gestión" id="ciudad_gestion" />
+                    <input type="text" placeholder="Ciudad de Gestión" id="ciudad_gestion" value="{{ciudad_gestion}}" />
                 </div>
             </div>
 
-            <!-- Información Económica -->
+            <!-- Información Crédito -->
             <div class="campo compania">
                 <div class="texto">
-                    <p>Actividad Económica:</p>
+                    <p>Estado:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Actividad Económica" id="actividad_economica" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Empresa donde Labora:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Empresa" id="empresa_labora" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Fecha de Vinculación:</p>
-                </div>
-                <div class="entrada">
-                    <input type="date" id="fecha_vinculacion" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Dirección Empresa:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Dirección Empresa" id="direccion_empresa" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Teléfono Empresa:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Teléfono Empresa" id="telefono_empresa" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Tipo de Contrato:</p>
-                </div>
-                <div class="entrada">
-                    <select id="tipo_contrato">
-                        <option value="Indefinido">Indefinido</option>
-                        <option value="Fijo">Fijo</option>
-                        <option value="Prestacion">Prestación de Servicios</option>
-                        <option value="Obra">Obra o Labor</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Cargo Actual:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Cargo Actual" id="cargo_actual" />
-                </div>
-            </div>
-
-            <!-- Información Financiera -->
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Ingresos Mensuales:</p>
-                </div>
-                <div class="entrada">
-                    <input type="number" placeholder="Ingresos" id="ingresos" />
+                    <input type="text" placeholder="Estado" id="estado" value="{{estado}}" />
                 </div>
             </div>
 
@@ -201,7 +75,8 @@
                     <p>Banco:</p>
                 </div>
                 <div class="entrada">
-                    <select id="banco">
+                    <select id="banco" value="{{banco}}">
+                        <option value="{{banco}}" selected>{{banco}}</option>
                         <option value="Bancolombia">Bancolombia</option>
                         <option value="Davivienda">Davivienda</option>
                         <option value="BBVA">BBVA</option>
@@ -212,12 +87,31 @@
 
             <div class="campo compania">
                 <div class="texto">
-                    <p>Asesor:</p>
+                    <p>Producto Solicitado:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Nombre del Asesor" id="asesor" />
+                    <input type="text" placeholder="Producto Solicitado" id="producto_solicitado" value="{{producto_solicitado}}" />
                 </div>
             </div>
+
+            <div class="campo compania">
+                <div class="texto">
+                    <p>Observaciones:</p>
+                </div>
+                <div class="entrada">
+                    <textarea placeholder="Observaciones" id="observaciones">{{observaciones}}</textarea>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            
         </div>
     </div>
 </div>
