@@ -112,7 +112,7 @@ const Vista  = {
         });
         
     },
-    
+
     enviarDatosFormulario() {
         const nombre_completo = document.getElementById('nombre_completo').value;
         const tipo_documento = document.getElementById('tipo_documento').value; 
@@ -219,6 +219,13 @@ const Vista  = {
     tomarFecha() {
         const fecha = document.getElementById('buscarPorFecha').value;
         return { fecha }
+    },
+
+    buscarPorIntervalo() {
+        const fechaInicio = document.getElementById('start_date').value;
+        const fechaFinal = document.getElementById('end_date').value;
+
+        return { fechaInicio, fechaFinal }
     },
 
     filtrarTabla() {
@@ -472,4 +479,10 @@ descargarVentas.onclick = async function () {
 const btnBuscarFecha = document.getElementById('btnBuscarFecha');
 btnBuscarFecha.onclick = function () {
     Tabla.datosPorFecha();
+}
+
+// Boton que permite filtrar los registros para un intervalo de fechas
+const btnBuscarIntervalo = document.getElementById('btnIntervalo');
+btnBuscarIntervalo.onclick = function () {
+    Tabla.datosPorIntervalo();
 }
