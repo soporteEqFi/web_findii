@@ -112,6 +112,7 @@ const Vista  = {
         });
         
     },
+    
     enviarDatosFormulario() {
         const nombre_completo = document.getElementById('nombre_completo').value;
         const tipo_documento = document.getElementById('tipo_documento').value; 
@@ -215,6 +216,10 @@ const Vista  = {
         };
     },
 
+    tomarFecha() {
+        const fecha = document.getElementById('buscarPorFecha').value;
+        return { fecha }
+    },
 
     filtrarTabla() {
         const columnaBuscarComboBox = document.getElementById('columnaBuscar');
@@ -263,7 +268,7 @@ const Vista  = {
 
         const quitarFiltro = document.getElementById('quitarFiltro');
         quitarFiltro.onclick = function () {
-            // Tabla.vaciarCamposFiltros();
+            Tabla.vaciarCamposFiltros();
             filtro.innerHTML = '';
             Controller.mostrarDatos();
         }
@@ -462,3 +467,9 @@ const descargarVentas = document.getElementById('descargarVentas');
 descargarVentas.onclick = async function () {
     Controller.descargarVentas()
 };
+
+// Boton que permite filtrar los registros para una fecha en especifico
+const btnBuscarFecha = document.getElementById('btnBuscarFecha');
+btnBuscarFecha.onclick = function () {
+    Tabla.datosPorFecha();
+}

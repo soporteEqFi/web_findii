@@ -7,10 +7,10 @@ const ModeloTabla = {
         const datos_enviar = {
             fecha_venta: fechaFormateada
         }
-
+        console.log(datos_enviar)
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/mostrar-por-fecha/",
+            url: "http://127.0.0.1:5000/datos-por-fecha/",
             headers: config.headers,
             data: datos_enviar
 

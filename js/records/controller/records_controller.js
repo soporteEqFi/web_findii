@@ -37,7 +37,7 @@ const Controller = {
             const producto = product.find(p => p.solicitante_id === solicitante.solicitante_id) || {};
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
 
-            // console.log(producto)
+            
 
                 return {
                     //info solicitante
@@ -179,10 +179,7 @@ const Controller = {
         } catch (error) {
             console.error("Error al descargar el archivo CSV:", error);
         }
-    },
-    
-
-
+    }, 
 
     iniciar() {
         Controller.mostrarDatos();
