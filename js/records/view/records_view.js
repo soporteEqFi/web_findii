@@ -3,6 +3,7 @@ import Modal from '../../components/Modal/modal.js'
 import swalAlert from '../../components/sweet_alert/sweetAlert.js';
 import Tabla from "../../components/Tabla/tabla.js";
 import Modales from '../../components/Modal/modal_views.js';
+import ModeloVentas from '../model/records_model.js'
 
 const Vista  = {
 
@@ -28,7 +29,7 @@ const Vista  = {
            
         // Crear filas de datos
         datos.forEach(dato => {
-            console.log(dato)
+            // console.log(dato)
             const fila = document.createElement('tr');
             for (const columna of columnasAMostrar) {
                 const celda = document.createElement('td');
@@ -54,26 +55,27 @@ const Vista  = {
                     estadoSelect.value = estado;
 
                     // Aplicar clases de color según el estado
-                    if (estado === 'activa' || estado === 'firmado') {
+                    if (estado === 'Aprobado' || estado === 'Aprobado') {
                         estadoSelect.classList.add('estado-verde');
                     } else if (estado === 'recuperada' || estado === 'temporal' || estado === 'verificado') {
                         estadoSelect.classList.add('estado-azul');
-                    } else if (estado === 'pendiente') {
+                    } else if (estado === 'Pendiente') {
                         estadoSelect.classList.add('estado-amarillo');
-                    } else if (estado === 'devuelta' || estado === 'baja' || estado === 'cancelado') {
+                    } else if (estado === 'Desembolso' || estado === 'baja' || estado === 'cancelado') {
                         estadoSelect.classList.add('estado-rojo');
                     }
 
                     estadoSelect.addEventListener('change', async (event) => {
                         try {
                             const nuevoEstado = event.target.value;
-                            swalAlert.mostrarPantallaDeCarga("Actualizando estado...");
-                            // const cedulaUsuario = localStorage.getItem('cedula');
-                            // const res = await ModeloVentas.editarEstadoDesdeTabla(dato.id_solicitante, nuevoEstado, cedulaUsuario);
-                            // if (res.status == 200) {
-                            //     Controller.mostrarDatos();
-                            //     Swal.close();
-                            // }
+                            // swalAlert.mensajeDeCarga("Actualizando estado...");
+                            const cedulaUsuario = dato.numero_documento
+                            const idSolicitante = dato.id_solicitante
+                            const res = await ModeloVentas.editarEstadoDesdeTabla(idSolicitante, nuevoEstado, cedulaUsuario);
+                            if (res.status == 200) {
+                                Controller.mostrarDatos();
+                                Swal.close();
+                            }
                         } catch (error) {
                             Swal.close();
                             console.error(error);
@@ -214,26 +216,26 @@ const Vista  = {
     },
 
 
-    // filtrarTabla() {
-    //     const columnaBuscarComboBox = document.getElementById('columnaBuscar');
-    //     const textoBuscar = document.getElementById('textoBuscar').value;
+    filtrarTabla() {
+        const columnaBuscarComboBox = document.getElementById('columnaBuscar');
+        const textoBuscar = document.getElementById('textoBuscar').value;
 
-    //     columnaBuscarComboBox.addEventListener('change', () => {
-    //         const estado = columnaBuscarComboBox.value;
+        columnaBuscarComboBox.addEventListener('change', () => {
+            const estado = columnaBuscarComboBox.value;
 
-    //         if (estado === "sin filtros") {
-    //             // Miscelaneas.recargarPagina(500)
-    //             let textoBuscar = document.getElementById('textoBuscar');
-    //             textoBuscar.value = ""
-    //         }
+            if (estado === "sin filtros") {
+                // Miscelaneas.recargarPagina(500)
+                let textoBuscar = document.getElementById('textoBuscar');
+                textoBuscar.value = ""
+            }
 
-    //     })
+        })
 
-    //     const columnaBuscar = columnaBuscarComboBox.value;
+        const columnaBuscar = columnaBuscarComboBox.value;
 
-    //     return { columnaBuscar, textoBuscar }
+        return { columnaBuscar, textoBuscar }
 
-    // },
+    },
 
     mostrarFiltrosActivos(filtroActivo, filtroValor) {
         const contenedorFiltrosActivos = document.getElementById('contenedorFiltrosActivos');

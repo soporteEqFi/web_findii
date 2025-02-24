@@ -10,7 +10,7 @@ const Tabla = {
             swalAlert.mensajeDeCarga("Filtrando tabla...")
             const { columnaBuscar, textoBuscar } = Vista.filtrarTabla()
             const response = await ModeloTabla.filtrarTabla(columnaBuscar, textoBuscar)
-            console.log(response.data["error"])
+            // console.log(response.data["error"])
 
             if (response.status == 204) {
                 swalAlert.mostrarMensajeError("No se encontraron resultados. Verifica los datos ingresados")
@@ -89,7 +89,7 @@ const Tabla = {
                 
             });
          
-            console.log(datosCombinados)
+            // console.log(datosCombinados)
             // Enviar los datos a la vista
             Vista.mostrarTodasLosDatos(datosCombinados);
             Vista.mostrarFiltrosActivos(columnaBuscar, textoBuscar);

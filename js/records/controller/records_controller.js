@@ -37,7 +37,7 @@ const Controller = {
             const producto = product.find(p => p.solicitante_id === solicitante.solicitante_id) || {};
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
 
-            console.log(producto)
+            // console.log(producto)
 
                 return {
                     //info solicitante
@@ -134,7 +134,7 @@ const Controller = {
             console.log(datos_agente)
             const fechaActual = dateUtils.get_actual_date()
 
-            console.log(fechaActual)
+            // console.log(fechaActual)
 
             const res = await ModeloVentas.insertData({
                 nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,

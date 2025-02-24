@@ -73,6 +73,24 @@ const Modelo = {
         return res
     },
 
+    async editarEstadoDesdeTabla(idSolicitante, nuevoEstado, cedulaUsuario) {
+
+        const infoEstado = {
+            estado: nuevoEstado,
+            solicitante_id: idSolicitante,
+            numero_documento : cedulaUsuario
+        }
+        
+        const res = await axios({
+            method: "PUT",
+            url: "http://127.0.0.1:5000/editar-estado/",
+            data: infoEstado,
+            headers: config.headers,
+        });
+        return res
+
+    },
+
 
 }
 export default Modelo;
