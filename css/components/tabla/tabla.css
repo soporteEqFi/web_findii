@@ -17,6 +17,7 @@
 .contenido-tabla .cabecera .botones-cabecera {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .contenido-tabla .cabecera .botones {
