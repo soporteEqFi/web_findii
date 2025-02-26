@@ -11,12 +11,18 @@ const Controller = {
     async mostrarDatos(){
         try {
             swalAlert.mensajeDeCarga("Actualizando tabla...")
-            const response = await ModeloVentas.mostrarDatos();
+            let response = await ModeloVentas.mostrarDatos();
+
+            console.log(response)
+            if (response.status === 500) {
+                response = await ModeloVentas.mostrarDatos();
+            }
             
             if (response.status !== 200) {
                 swalAlert.mostrarMensajeError("Hubo un error al mostrar las ventas");
                 return;
             }
+
             
             // Extraer registros asegurando que sean arrays
             const registros = response.data.registros || {};
