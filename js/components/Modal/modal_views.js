@@ -12,7 +12,7 @@ const Modales = {
     },
     
     editSellModal(modalCuerpo, dato) {
-        console.log(dato)
+        const rol = localStorage.getItem('rol')
         fetch('../js/components/Modal/content_types/edit_sell.html')
             .then(response => response.text())
             .then(template => {
@@ -30,6 +30,17 @@ const Modales = {
                     .replace('{{observaciones}}', dato['observacion'])
     
                 modalCuerpo.innerHTML = htmlContent;
+
+                // Si el rol es banco, deshabilitar todos los campos excepto estado y observaciones
+                if (rol === 'banco') {
+                    const inputs = modalCuerpo.querySelectorAll('input, select');
+                    inputs.forEach(input => {
+                        if (input.id !== 'estado' && input.id !== 'observaciones') {
+                            input.disabled = true;
+                        }
+                    });
+                }
+
             })
             .catch(error => {
                 console.error('Error loading HTML template:', error);
