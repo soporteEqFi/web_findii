@@ -9,7 +9,13 @@ const Vista = {
     }, 
     redirigirIndex(){
         location.href ="./admin.html"
-    }
+    },
+    redirigirBank(){
+        location.href ="./bank.html"
+    },
+    redirigirAgente(){
+        location.href ="./agent.html"
+    },
 
 }
 export default Vista;
