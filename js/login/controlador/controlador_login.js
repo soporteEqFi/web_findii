@@ -10,21 +10,25 @@ const Controlador = {
             const usuarioDatos = res.data.usuario[0]
             
             if (res.data.acceso === "AUTORIZADO"){
+                const access_token = res.data.access_token;
+                const cedula = usuarioDatos['cedula']
+                const rol = usuarioDatos['rol'].toLowerCase()
+                const empresa = usuarioDatos['empresa']
+                const logo= usuarioDatos['imagen_aliado']
 
-            const access_token = res.data.access_token;
-            const cedula = usuarioDatos['cedula']
-            const rol = usuarioDatos['rol']
-            const empresa = usuarioDatos['empresa']
-            const logo= usuarioDatos['imagen_aliado']
-            
+                localStorage.setItem('access_token', access_token)
+                localStorage.setItem('cedula', cedula)
+                localStorage.setItem("rol", rol)
 
-            localStorage.setItem('access_token', access_token)
-            localStorage.setItem('cedula', cedula)
-            localStorage.setItem("rol", rol)
-                     
-            Vista.redirigirIndex()
-
-
+                if (rol === "admin"){
+                    Vista.redirigirIndex()
+                }
+                if (rol === "banco"){
+                    Vista.redirigirBank()
+                }
+                if (rol === "agente"){
+                    Vista.redirigirAgente()
+                }
             }
             else{
                 const mensaje = "Usuario no encontrado"
