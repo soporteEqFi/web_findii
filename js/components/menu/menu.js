@@ -21,9 +21,6 @@ const Menu = {
             const cedula = localStorage.getItem('cedula')
             
             const res = await Model.getUserInfo(cedula)
-
-            console.log(res)
-            
             const nombreUsuario = res.data['nombre']
             const rolUsuario = res.data["rol"]
             const empresaNombre = res.data['empresa']
@@ -35,10 +32,6 @@ const Menu = {
 
             if (localStorage.getItem("rol").toLowerCase() == "banco") {
                 this.opcionesMenuBanco(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
-            }
-
-            if (localStorage.getItem("rol").toLowerCase() == "team leader") {
-                this.opcionesMenuTeamLeader(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }
             
             if (localStorage.getItem("rol").toLowerCase() == "agente") {
@@ -75,29 +68,6 @@ const Menu = {
         <p>${nombreUsuario} </p>
         <p>${rolUsuario} </p>
     
-        `
-
-        return opcionesMenu
-    },
-
-    opcionesMenuTeamLeader(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario) {
-        nombreEmpresa.innerHTML = 
-        `
-        <img src="${logo}" alt="">
-        <h1>${empresaNombre}</h1>
-        `
-        opcionesMenu.innerHTML =
-            `
-            <a class="" href="./team_leader.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
-            <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
-        `
-
-        datosUsuarioMenu.innerHTML = 
-        `
-        <p>${nombreUsuario} </p>
-        <p>${rolUsuario} </p>
         `
 
         return opcionesMenu
