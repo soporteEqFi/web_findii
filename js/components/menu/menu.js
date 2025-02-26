@@ -21,6 +21,8 @@ const Menu = {
             const cedula = localStorage.getItem('cedula')
             
             const res = await Model.getUserInfo(cedula)
+
+            console.log(res)
             
             const nombreUsuario = res.data['nombre']
             const rolUsuario = res.data["rol"]
@@ -31,8 +33,8 @@ const Menu = {
                 this.opcionesMenuAdmin(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
 
-            if (localStorage.getItem("rol").toLowerCase() == "calidad") {
-                this.opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
+            if (localStorage.getItem("rol").toLowerCase() == "banco") {
+                this.opcionesMenuBanco(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }
 
             if (localStorage.getItem("rol").toLowerCase() == "team leader") {
@@ -101,7 +103,7 @@ const Menu = {
         return opcionesMenu
     },
 
-    opcionesMenuCalidad(nombreEmpresa,opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario) {
+    opcionesMenuBanco(nombreEmpresa,opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo) {
         nombreEmpresa.innerHTML = 
         `
         <img src="${logo}" alt="">
@@ -109,7 +111,7 @@ const Menu = {
         `
         opcionesMenu.innerHTML =
             `
-            <a class="" href="./calidad.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a class="" href="./bank.html"><i class="fa-solid fa-house"></i> Inicio</a>
         `
 
         datosUsuarioMenu.innerHTML = 
@@ -121,7 +123,7 @@ const Menu = {
         return opcionesMenu
     },
 
-    opcionesMenuAgente(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario){
+    opcionesMenuAgente(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo){
         nombreEmpresa.innerHTML = 
         `
         <img src="${logo}" alt="">
