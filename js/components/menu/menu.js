@@ -60,7 +60,7 @@ const Menu = {
             <a class="" href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
             <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
             <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
@@ -103,7 +103,7 @@ const Menu = {
         `
             <a href="agentes.html"><i class="fa-solid fa-house"></i> Inicio</a>
             <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 

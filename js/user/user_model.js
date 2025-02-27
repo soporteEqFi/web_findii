@@ -19,6 +19,27 @@ const Model = {
             headers: config.headers,
         });
         return res
+    },
+    async update_user(datos, idAgente){
+
+        const data_agentes ={
+            nombre: datos.nombre,
+            cedula: datos.cedula,
+            rol: datos.rol,
+            empresa: datos.empresa,
+            id: idAgente
+        }
+        
+
+        const res = axios({
+            method: "PUT",
+            url: "http://127.0.0.1:5000/update-user/",
+            data: data_agentes,
+            headers: config.headers,
+          });
+          return res
+        
+        
     }
 }
 export default Model;

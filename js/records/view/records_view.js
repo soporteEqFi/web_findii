@@ -289,6 +289,7 @@ export default Vista;
 document.addEventListener('DOMContentLoaded', function () {
 
     Controller.iniciar()
+    VistaProfile.mostrarDatosUsuario()
 
 });
 

@@ -5,6 +5,7 @@
 @import url(./components/menu/menu-opciones.css); 
 @import url(./components/tabla/tabla.css);
 @import url(./components/cuadros-estadisticos/cuadros-estadisticos.css);
+@import url(./components/profile.css);
 
 .contenedor-scroll{
     display: flex;
