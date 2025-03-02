@@ -120,7 +120,7 @@ const Controller = {
                 estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
                 direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
                 valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
-                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco, asesor } = Vista.enviarDatosFormulario()
+                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco } = Vista.enviarDatosFormulario()
 
         console.log({
             nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,
@@ -129,16 +129,17 @@ const Controller = {
             estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
             direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
             valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
-            total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco, asesor
+            total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco
         });
 
         try {
             const cedula = localStorage.getItem('cedula')
-            const datos_agente = await userModel.get_agent_info(asesor)
+            const datos_agente = await userModel.getUserInfo(cedula)
             
             console.log("los datos del agente son:")
             console.log(datos_agente)
-            const fechaActual = dateUtils.get_actual_date()
+            const asesor = datos_agente.data["cedula"]
+            // const fechaActual = dateUtils.get_actual_date()
 
             // console.log(fechaActual)
 

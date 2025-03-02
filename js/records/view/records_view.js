@@ -149,7 +149,7 @@ const Vista  = {
         const segundo_titular = document.getElementById('segundo_titular').value;
         const observacion = document.getElementById('observacion').value;
         const banco = document.getElementById('banco').value;
-        const asesor = document.getElementById('asesor').value;
+        // const asesor = document.getElementById('asesor').value;
 
         // const camposVacios = [];
         // // const camposRequeridos = [
@@ -212,7 +212,7 @@ const Vista  = {
             segundo_titular,
             observacion,
             banco,
-            asesor
+            // asesor
         };
     },
 
@@ -287,10 +287,8 @@ const Vista  = {
 export default Vista;
 
 document.addEventListener('DOMContentLoaded', function () {
-
     Controller.iniciar()
-    VistaProfile.mostrarDatosUsuario()
-
+    Vista.mostrarTodasLosDatos()
 });
 
 const botonAñadirVenta = document.getElementById('botonAñadirVenta');
