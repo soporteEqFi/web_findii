@@ -66,7 +66,11 @@
                     <p>Estado:</p>
                 </div>
                 <div class="entrada">
-                    <input type="text" placeholder="Estado" id="estado" value="{{estado}}" />
+                    <select id="estado">
+                        <option value="Pendiente" {{estado === 'Pendiente' ? 'selected' : ''}}>Pendiente</option>
+                        <option value="Desembolso" {{estado === 'Desembolso' ? 'selected' : ''}}>Desembolso</option>
+                        <option value="Aprobado" {{estado === 'Aprobado' ? 'selected' : ''}}>Aprobado</option>
+                    </select>
                 </div>
             </div>
 
@@ -75,12 +79,10 @@
                     <p>Banco:</p>
                 </div>
                 <div class="entrada">
-                    <select id="banco" value="{{banco}}">
-                        <option value="{{banco}}" selected>{{banco}}</option>
-                        <option value="Bancolombia">Bancolombia</option>
-                        <option value="Davivienda">Davivienda</option>
-                        <option value="BBVA">BBVA</option>
-                        <option value="Scotiabank">Scotiabank</option>
+                    <select id="banco">
+                        <option value="Bancolombia" {{banco === 'Bancolombia' ? 'selected' : ''}}>Bancolombia</option>
+                        <option value="Davivienda" {{banco === 'Davivienda' ? 'selected' : ''}}>Davivienda</option>
+                        <option value="Nequi" {{banco === 'Nequi' ? 'selected' : ''}}>Nequi</option>
                     </select>
                 </div>
             </div>
