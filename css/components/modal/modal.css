@@ -7,33 +7,32 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-contenido {
     display: flex;
     flex-direction: column;
-    row-gap: 1vw;
     margin: 2% 25%;
-    padding: 2vw;
+    padding: 1.5rem;
     background-color: var(--blanco);
-    border-radius: 0.5vw;
-    width: 50vw;
-    min-height: 80vh;
-    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60vw; /* Reducir un poco el ancho */
+    margin: 3% auto; /* Centrar horizontalmente */
+    max-height: 85vh; /* Altura máxima */
+    overflow-y: auto; /* Permitir scroll si el contenido es muy largo */
 }
 
 .modal-cabecera {
     display: flex;
-    border-bottom: 1px solid var(--fondo);
+    justify-content: space-between;
+    padding: 1rem;
 }
 
-.modal-cabecera {
-    display: flex;
-    align-items: center;
-    /* column-gap: 0.5vw; */
-    justify-content: flex-end;
-    padding: 0 1vw 1vw 0;
+.modal-cabecera p{
+    font-size: 1.5vw;
+    font-weight: 400;
 }
 
 .modal-cuerpo input[type=text],
@@ -43,12 +42,22 @@
 .modal-cuerpo input[type=password],
 .modal-cuerpo input[type=phone],
 .modal-cuerpo input[type=number],
-.modal-cuerpo select {
-    width: 20vw;
-    padding: 0.5vw 1vw;
-    box-sizing: border-box;
-    border: 1px solid #cdcdcd;
-    border-radius: 0.5vw;
+.modal-cuerpo select,
+.modal-cuerpo textarea {
+    width: 100%; /* Hacer los inputs full width */
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.90rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-cuerpo input:focus,
+.modal-cuerpo select:focus,
+.modal-cuerpo textarea:focus {
+    outline: none;
+    border-color: #9f21f3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
 }
 
 .modal-cuerpo textarea{
@@ -59,6 +68,7 @@
     width: 20vw;
     resize: none;
 }
+
 
 .modal-cuerpo .campos .informacion-agente-venta{
     display: flex;
@@ -80,13 +90,24 @@
     justify-content: space-between;
 }
 
-.informacion-venta .contenido-venta{
-    display: grid;
-    row-gap: 20px;
+.informacion-venta {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding-right: 1rem;
 }
 
-.informacion-venta .campo .texto{
-    font-weight: bold;
+.informacion-venta .contenido-venta {
+    display: grid;
+    gap: 1.5rem; /* Usar gap en lugar de row-gap */
+}
+
+.informacion-venta .campo .texto {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
 .informacion-venta .contenido-editable{
@@ -97,8 +118,68 @@
     row-gap: 20px;
 }
 
+
+/* Estilos para las secciones */
+.seccion {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.seccion-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #9f21f3;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* Grid de dos columnas para los campos */
+.contenido-seccion {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.campo.compania {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo.compania .texto p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    margin: 0;
+}
+
+/* Estilos para los inputs y selects */
+.entrada input,
+.entrada select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.entrada input:focus,
+.entrada select:focus {
+    border-color: #9f21f3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+    outline: none;
+}
+
 .modal-footer{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
 }
+
