@@ -1,119 +1,117 @@
 <div class="campos">
     <div class="informacion-venta">
-        <div class="contenido-venta">
-            <!-- Información Personal -->
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Nombre Completo:</p>
+        <!-- Sección Información Personal -->
+        <div class="seccion">
+            <h3 class="seccion-titulo">Información Personal</h3>
+            <div class="contenido-seccion">
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Nombre Completo:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Nombre Completo" id="nombre_completo" value="{{nombre_completo}}" />
+                    </div>
                 </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Nombre Completo" id="nombre_completo" value="{{nombre_completo}}" />
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Tipo de Documento:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="tipo_documento" value="{{tipo_documento}}">
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="CE">Cédula de Extranjería</option>
+                            <option value="PA">Pasaporte</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Número de Documento:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Número de Documento" id="numero_documento" value="{{numero_documento}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Número Celular:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Número Celular" id="numero_celular" value="{{numero_celular}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Correo Electrónico:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="email" placeholder="Correo Electrónico" id="correo_electronico" value="{{correo_electronico}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Ciudad de Gestión:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Ciudad de Gestión" id="ciudad_gestion" value="{{ciudad_gestion}}" />
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Tipo de Documento:</p>
+        <!-- Sección Estado y Detalles del Crédito -->
+        <div class="seccion">
+            <h3 class="seccion-titulo">Información del Crédito</h3>
+            <div class="contenido-seccion">
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Estado:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="estado">
+                            <option value="Pendiente" {{estado === 'Pendiente' ? 'selected' : ''}}>Pendiente</option>
+                            <option value="Desembolso" {{estado === 'Desembolso' ? 'selected' : ''}}>Desembolso</option>
+                            <option value="Aprobado" {{estado === 'Aprobado' ? 'selected' : ''}}>Aprobado</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="entrada">
-                    <select id="tipo_documento" value="{{tipo_documento}}">
-                        <option value="CC">Cédula de Ciudadanía</option>
-                        <option value="CE">Cédula de Extranjería</option>
-                        <option value="PA">Pasaporte</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Número de Documento:</p>
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Banco:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="banco">
+                            <option value="Bancolombia" {{banco === 'Bancolombia' ? 'selected' : ''}}>Bancolombia</option>
+                            <option value="Davivienda" {{banco === 'Davivienda' ? 'selected' : ''}}>Davivienda</option>
+                            <option value="Nequi" {{banco === 'Nequi' ? 'selected' : ''}}>Nequi</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Número de Documento" id="numero_documento" value="{{numero_documento}}" />
-                </div>
-            </div>
 
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Número Celular:</p>
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Producto Solicitado:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Producto Solicitado" id="producto_solicitado" value="{{producto_solicitado}}" />
+                    </div>
                 </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Número Celular" id="numero_celular" value="{{numero_celular}}" />
-                </div>
-            </div>
 
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Correo Electrónico:</p>
-                </div>
-                <div class="entrada">
-                    <input type="email" placeholder="Correo Electrónico" id="correo_electronico" value="{{correo_electronico}}" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Ciudad de Gestión:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Ciudad de Gestión" id="ciudad_gestion" value="{{ciudad_gestion}}" />
-                </div>
-            </div>
-
-            <!-- Información Crédito -->
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Estado:</p>
-                </div>
-                <div class="entrada">
-                    <select id="estado">
-                        <option value="Pendiente" {{estado === 'Pendiente' ? 'selected' : ''}}>Pendiente</option>
-                        <option value="Desembolso" {{estado === 'Desembolso' ? 'selected' : ''}}>Desembolso</option>
-                        <option value="Aprobado" {{estado === 'Aprobado' ? 'selected' : ''}}>Aprobado</option>
-                    </select>
+                <div class="campo compania campo-completo">
+                    <div class="texto">
+                        <p>Observaciones:</p>
+                    </div>
+                    <div class="entrada">
+                        <textarea placeholder="Observaciones" id="observaciones">{{observaciones}}</textarea>
+                    </div>
                 </div>
             </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Banco:</p>
-                </div>
-                <div class="entrada">
-                    <select id="banco">
-                        <option value="Bancolombia" {{banco === 'Bancolombia' ? 'selected' : ''}}>Bancolombia</option>
-                        <option value="Davivienda" {{banco === 'Davivienda' ? 'selected' : ''}}>Davivienda</option>
-                        <option value="Nequi" {{banco === 'Nequi' ? 'selected' : ''}}>Nequi</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Producto Solicitado:</p>
-                </div>
-                <div class="entrada">
-                    <input type="text" placeholder="Producto Solicitado" id="producto_solicitado" value="{{producto_solicitado}}" />
-                </div>
-            </div>
-
-            <div class="campo compania">
-                <div class="texto">
-                    <p>Observaciones:</p>
-                </div>
-                <div class="entrada">
-                    <textarea placeholder="Observaciones" id="observaciones">{{observaciones}}</textarea>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-            
         </div>
     </div>
 </div>
