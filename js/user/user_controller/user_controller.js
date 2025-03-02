@@ -3,7 +3,9 @@ import Model from "../user_model.js";
 import VistaProfile from "../../components/profile.js";
 import swalAlert from "../../components/sweet_alert/sweetAlert.js";
 import Miscelaneas from "../../utils/miscelaneas.js";
+
 const Controller ={
+    
     async userData(){
         const res = await Model.getUserInfo(localStorage.getItem('cedula'))
         VistaProfile.mostrarDatosUsuario(res)
@@ -13,7 +15,6 @@ const Controller ={
         try {
             const datos = VistaProfile.actualizarAgentes()
           
-            const cedula = datos.cedulaAgente
             const datosAgente = await Model.getUserInfo(localStorage.getItem('cedula'))
             const idAgente = datosAgente.data['id']
             const res = await Model.update_user(datos, idAgente)
