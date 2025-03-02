@@ -45,6 +45,7 @@ const Modales = {
             .catch(error => {
                 console.error('Error loading HTML template:', error);
             });
-    }
+    },
+    
 }
 export default Modales;
