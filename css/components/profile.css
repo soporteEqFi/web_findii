@@ -4,7 +4,7 @@
 /*@import url(./componentes/menu.css);*/
 @import url(./menu/menu-opciones.css); 
 
-.contenido{
+.contenido{	
 	display: grid;
 	grid-template-areas: 
 	"titulo titulo"
@@ -72,7 +72,9 @@
  
 /* INFORMACION DATOS (MODAL)*/
 
-.modal-contenido {
+/* EST ESTA DANDO PROBLEMAS EN EL MODAL PRINCIPAL */
+
+/* .modal-contenido {
 	width: 65dvw;
 }
 
@@ -81,7 +83,8 @@
 	justify-content: space-around;
 	align-items: center;
 	
-}
+} */
+
 .modal-cuerpo .lado-izquierdo{
     display: flex;
     text-align: center;
