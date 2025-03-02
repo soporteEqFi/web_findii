@@ -30,7 +30,6 @@ const Model = {
             id: idAgente
         }
         
-
         const res = axios({
             method: "PUT",
             url: "http://127.0.0.1:5000/update-user/",
