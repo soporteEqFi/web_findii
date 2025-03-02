@@ -58,9 +58,8 @@ const Menu = {
         opcionesMenu.innerHTML =
             `
             <a class="" href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
+            <a class="" href="./perfil.html"><i class="fa-solid fa-chart-simple"></i> Perfil</a>
             <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
@@ -82,6 +81,7 @@ const Menu = {
         opcionesMenu.innerHTML =
             `
             <a class="" href="./bank.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a class="" href="./perfil.html"><i class="fa-solid fa-users"></i> perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
@@ -102,7 +102,6 @@ const Menu = {
         opcionesMenu.innerHTML =
         `
             <a href="agentes.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
             <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
