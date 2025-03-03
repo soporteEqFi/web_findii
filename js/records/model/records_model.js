@@ -91,6 +91,16 @@ const Modelo = {
 
     },
 
+    async actualizarDatosVenta(datosOrganizados) {
 
+        console.log(datosOrganizados)
+        const res = await axios({
+            method: "PUT",
+            url: "http://127.0.0.1:5000/edit-record/",
+            data: datosOrganizados,
+            headers: config.headers,
+        });
+        return res
+    }
 }
 export default Modelo;
