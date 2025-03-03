@@ -20,7 +20,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 60vw; /* Reducir un poco el ancho */
     margin: 3% auto; /* Centrar horizontalmente */
-    max-height: 85vh; /* Altura máxima */
+    max-height: 80vh; /* Altura máxima */
     overflow-y: auto; /* Permitir scroll si el contenido es muy largo */
 }
 
@@ -68,7 +68,6 @@
     width: 20vw;
     resize: none;
 }
-
 
 .modal-cuerpo .campos .informacion-agente-venta{
     display: flex;
