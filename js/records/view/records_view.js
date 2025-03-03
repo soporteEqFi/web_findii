@@ -113,6 +113,85 @@ const Vista  = {
         
     },
 
+    eliminarVenta() {
+        const id = document.getElementById('idVenta').textContent;
+        return id
+    },
+
+    editarVenta() {
+        const nombre_completo = document.getElementById('nombre_completo').value;
+        const tipo_documento = document.getElementById('tipo_documento').value;
+        const numero_documento = document.getElementById('numero_documento').value;
+        const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
+        const numero_celular = document.getElementById('numero_celular').value;
+        const correo_electronico = document.getElementById('correo_electronico').value;
+        const nivel_estudio = document.getElementById('nivel_estudio').value;
+        const profesion = document.getElementById('profesion').value;
+        const estado_civil = document.getElementById('estado_civil').value;
+        const personas_a_cargo = document.getElementById('personas_a_cargo').value;
+        const direccion_residencia = document.getElementById('direccion_residencia').value;
+        const tipo_vivienda = document.getElementById('tipo_vivienda').value;
+        const barrio = document.getElementById('barrio').value;
+        const departamento = document.getElementById('departamento').value;
+        const estrato = document.getElementById('estrato').value;
+        const ciudad_gestion = document.getElementById('ciudad_gestion').value;
+        const actividad_economica = document.getElementById('actividad_economica').value;
+        const empresa_labora = document.getElementById('empresa_labora').value;
+        const fecha_vinculacion = document.getElementById('fecha_vinculacion').value;
+        const direccion_empresa = document.getElementById('direccion_empresa').value;
+        const telefono_empresa = document.getElementById('telefono_empresa').value;
+        const tipo_contrato = document.getElementById('tipo_contrato').value;
+        const cargo_actual = document.getElementById('cargo_actual').value;
+        const ingresos = document.getElementById('ingresos').value;
+        const valor_inmueble = document.getElementById('valor_inmueble').value;
+        const cuota_inicial = document.getElementById('cuota_inicial').value;
+        const porcentaje_financiar = document.getElementById('porcentaje_financiar').value;
+        const total_egresos = document.getElementById('total_egresos').value;
+        const total_activos = document.getElementById('total_activos').value;
+        const total_pasivos = document.getElementById('total_pasivos').value;
+        const tipo_credito = document.getElementById('tipo_credito').value;
+        const plazo_meses = document.getElementById('plazo_meses').value;
+        const segundo_titular = document.getElementById('segundo_titular').value;
+        const observacion = document.getElementById('observacion').value;
+
+        return {
+            nombre_completo,
+            tipo_documento,
+            numero_documento,
+            fecha_nacimiento,
+            numero_celular,
+            correo_electronico,
+            nivel_estudio,
+            profesion,
+            estado_civil,
+            personas_a_cargo,
+            direccion_residencia,
+            tipo_vivienda,
+            barrio,
+            departamento,
+            estrato,
+            ciudad_gestion,
+            actividad_economica,
+            empresa_labora,
+            fecha_vinculacion,
+            direccion_empresa,
+            telefono_empresa,
+            tipo_contrato,
+            cargo_actual,
+            ingresos,
+            valor_inmueble,
+            cuota_inicial,
+            porcentaje_financiar,
+            total_egresos,
+            total_activos,
+            total_pasivos,
+            tipo_credito,
+            plazo_meses,
+            segundo_titular,
+            observacion
+        }
+    },
+
     enviarDatosFormulario() {
         const nombre_completo = document.getElementById('nombre_completo').value;
         const tipo_documento = document.getElementById('tipo_documento').value; 
@@ -290,6 +369,26 @@ document.addEventListener('DOMContentLoaded', function () {
     Controller.iniciar()
     Vista.mostrarTodasLosDatos()
 });
+
+// Botón dentro del modal al seleccionar un registro que edita la info de una venta
+const botonEditar = document.getElementById('botonEditar');
+botonEditar.onclick = function () {
+    swalAlert.confirmarAccion({
+        texto: '¿Estás seguro de actualizar la venta?',
+        funcionAlAceptar: Controller.editarventa,
+        mensajeAlCancelar: "No se ha editado nada"
+    })
+}
+
+// Botón dentro del modal al seleccionar un registro que elimina la info de una venta
+const botonEliminar = document.getElementById('botonEliminar');
+botonEliminar.onclick = function () {
+    swalAlert.confirmarAccion({
+        texto: 'Se eliminará el registro de forma permanente',
+        funcionAlAceptar: Controlador.eliminarVenta,
+        mensajeAlCancelar: 'No se ha eliminado nada'
+    })
+}
 
 const botonAñadirVenta = document.getElementById('botonAñadirVenta');
 botonAñadirVenta.onclick = function () {
