@@ -61,45 +61,299 @@
                         <input type="text" placeholder="Ciudad de Gestión" id="ciudad_gestion" value="{{ciudad_gestion}}" />
                     </div>
                 </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Fecha de Nacimiento:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="date" id="fecha_nacimiento" value="{{fecha_nacimiento}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Nivel de Estudio:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="nivel_estudio">
+                            <option value="Primaria" {{nivel_estudio === 'Primaria' ? 'selected' : ''}}>Primaria</option>
+                            <option value="Secundaria" {{nivel_estudio === 'Secundaria' ? 'selected' : ''}}>Secundaria</option>
+                            <option value="Técnico" {{nivel_estudio === 'Técnico' ? 'selected' : ''}}>Técnico</option>
+                            <option value="Profesional" {{nivel_estudio === 'Profesional' ? 'selected' : ''}}>Profesional</option>
+                            <option value="Postgrado" {{nivel_estudio === 'Postgrado' ? 'selected' : ''}}>Postgrado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Profesión:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Profesión" id="profesion" value="{{profesion}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Estado Civil:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="estado_civil">
+                            <option value="Soltero" {{estado_civil === 'Soltero' ? 'selected' : ''}}>Soltero</option>
+                            <option value="Casado" {{estado_civil === 'Casado' ? 'selected' : ''}}>Casado</option>
+                            <option value="Divorciado" {{estado_civil === 'Divorciado' ? 'selected' : ''}}>Divorciado</option>
+                            <option value="Viudo" {{estado_civil === 'Viudo' ? 'selected' : ''}}>Viudo</option>
+                            <option value="Union Libre" {{estado_civil === 'Union Libre' ? 'selected' : ''}}>Unión Libre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Personas a Cargo:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Personas a Cargo" id="personas_a_cargo" value="{{personas_a_cargo}}" />
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Sección Estado y Detalles del Crédito -->
+        <!-- Sección Información de Ubicación -->
         <div class="seccion">
-            <h3 class="seccion-titulo">Información del Crédito</h3>
+            <h3 class="seccion-titulo">Información de Ubicación</h3>
             <div class="contenido-seccion">
                 <div class="campo compania">
                     <div class="texto">
-                        <p>Estado:</p>
+                        <p>Dirección de Residencia:</p>
                     </div>
                     <div class="entrada">
-                        <select id="estado">
-                            <option value="Pendiente" {{estado === 'Pendiente' ? 'selected' : ''}}>Pendiente</option>
-                            <option value="Desembolso" {{estado === 'Desembolso' ? 'selected' : ''}}>Desembolso</option>
-                            <option value="Aprobado" {{estado === 'Aprobado' ? 'selected' : ''}}>Aprobado</option>
+                        <input type="text" placeholder="Dirección" id="direccion_residencia" value="{{direccion_residencia}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Tipo de Vivienda:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="tipo_vivienda">
+                            <option value="Propia" {{tipo_vivienda === 'Propia' ? 'selected' : ''}}>Propia</option>
+                            <option value="Arrendada" {{tipo_vivienda === 'Arrendada' ? 'selected' : ''}}>Arrendada</option>
+                            <option value="Familiar" {{tipo_vivienda === 'Familiar' ? 'selected' : ''}}>Familiar</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="campo compania">
                     <div class="texto">
-                        <p>Banco:</p>
+                        <p>Barrio:</p>
                     </div>
                     <div class="entrada">
-                        <select id="banco">
-                            <option value="Bancolombia" {{banco === 'Bancolombia' ? 'selected' : ''}}>Bancolombia</option>
-                            <option value="Davivienda" {{banco === 'Davivienda' ? 'selected' : ''}}>Davivienda</option>
-                            <option value="Nequi" {{banco === 'Nequi' ? 'selected' : ''}}>Nequi</option>
+                        <input type="text" placeholder="Barrio" id="barrio" value="{{barrio}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Departamento:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Departamento" id="departamento" value="{{departamento}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Estrato:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Estrato" id="estrato" value="{{estrato}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información Económica -->
+        <div class="seccion">
+            <h3 class="seccion-titulo">Información Económica</h3>
+            <div class="contenido-seccion">
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Actividad Económica:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Actividad Económica" id="actividad_economica" value="{{actividad_economica}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Empresa donde Labora:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Empresa" id="empresa_labora" value="{{empresa_labora}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Fecha de Vinculación:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="date" id="fecha_vinculacion" value="{{fecha_vinculacion}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Dirección Empresa:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Dirección Empresa" id="direccion_empresa" value="{{direccion_empresa}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Teléfono Empresa:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="text" placeholder="Teléfono Empresa" id="telefono_empresa" value="{{telefono_empresa}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Tipo de Contrato:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="tipo_contrato">
+                            <option value="Indefinido" {{tipo_contrato === 'Indefinido' ? 'selected' : ''}}>Indefinido</option>
+                            <option value="Fijo" {{tipo_contrato === 'Fijo' ? 'selected' : ''}}>Fijo</option>
+                            <option value="Prestacion" {{tipo_contrato === 'Prestacion' ? 'selected' : ''}}>Prestación de Servicios</option>
+                            <option value="Obra" {{tipo_contrato === 'Obra' ? 'selected' : ''}}>Obra o Labor</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="campo compania">
                     <div class="texto">
-                        <p>Producto Solicitado:</p>
+                        <p>Cargo Actual:</p>
                     </div>
                     <div class="entrada">
-                        <input type="text" placeholder="Producto Solicitado" id="producto_solicitado" value="{{producto_solicitado}}" />
+                        <input type="text" placeholder="Cargo Actual" id="cargo_actual" value="{{cargo_actual}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información Financiera -->
+        <div class="seccion">
+            <h3 class="seccion-titulo">Información Financiera</h3>
+            <div class="contenido-seccion">
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Ingresos Mensuales:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Ingresos" id="ingresos" value="{{ingresos}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Valor del Inmueble:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Valor Inmueble" id="valor_inmueble" value="{{valor_inmueble}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Cuota Inicial:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Cuota Inicial" id="cuota_inicial" value="{{cuota_inicial}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Porcentaje a Financiar:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Porcentaje" id="porcentaje_financiar" value="{{porcentaje_financiar}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Total Egresos:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Total Egresos" id="total_egresos" value="{{total_egresos}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Total Activos:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Total Activos" id="total_activos" value="{{total_activos}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Total Pasivos:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Total Pasivos" id="total_pasivos" value="{{total_pasivos}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información del Banco -->
+        <div class="seccion">
+            <h3 class="seccion-titulo">Información del Banco</h3>
+            <div class="contenido-seccion">
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Tipo de Crédito:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="tipo_credito">
+                            <option value="Hipotecario" {{tipo_credito === 'Hipotecario' ? 'selected' : ''}}>Hipotecario</option>
+                            <option value="Consumo" {{tipo_credito === 'Consumo' ? 'selected' : ''}}>Consumo</option>
+                            <option value="Vehiculo" {{tipo_credito === 'Vehiculo' ? 'selected' : ''}}>Vehículo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Plazo en Meses:</p>
+                    </div>
+                    <div class="entrada">
+                        <input type="number" placeholder="Plazo en Meses" id="plazo_meses" value="{{plazo_meses}}" />
+                    </div>
+                </div>
+
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Segundo Titular:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="segundo_titular">
+                            <option value="Si" {{segundo_titular === 'Si' ? 'selected' : ''}}>Sí</option>
+                            <option value="No" {{segundo_titular === 'No' ? 'selected' : ''}}>No</option>
+                        </select>
                     </div>
                 </div>
 
@@ -108,7 +362,7 @@
                         <p>Observaciones:</p>
                     </div>
                     <div class="entrada">
-                        <textarea placeholder="Observaciones" id="observaciones">{{observaciones}}</textarea>
+                        <textarea id="observacion" placeholder="Observaciones">{{observacion}}</textarea>
                     </div>
                 </div>
             </div>
