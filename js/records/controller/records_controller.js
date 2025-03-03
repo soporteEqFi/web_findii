@@ -188,6 +188,89 @@ const Controller = {
         }
     }, 
  
+    async editarventa() {
+        try {
+            const valores = Vista.editarVenta();
+            const cedulaUsuario = localStorage.getItem('cedula');
+
+            const cedulaSolicitante = valores.numero_documento
+            const datosSolicitante = await userModel.get_solicitante_info(cedulaSolicitante)
+
+            console.log(datosSolicitante)
+
+            const id_solicitante = datosSolicitante.data["solicitante_id"]
+
+            console.log(id_solicitante)
+
+            // Organizar datos en la estructura requerida
+            const datosOrganizados = {
+                solicitante_id: id_solicitante,
+                SOLICITANTES: {
+                    nombre_completo: valores.nombre_completo,
+                    tipo_documento: valores.tipo_documento,
+                    numero_documento: valores.numero_documento,
+                    fecha_nacimiento: valores.fecha_nacimiento,
+                    numero_celular: valores.numero_celular,
+                    correo_electronico: valores.correo_electronico,
+                    nivel_estudio: valores.nivel_estudio,
+                    profesion: valores.profesion,
+                    estado_civil: valores.estado_civil,
+                    personas_a_cargo: valores.personas_a_cargo,
+                },
+                UBICACION: {
+                    direccion_residencia: valores.direccion_residencia,
+                    tipo_vivienda: valores.tipo_vivienda,
+                    barrio: valores.barrio,
+                    departamento: valores.departamento,
+                    estrato: valores.estrato,
+                    ciudad_gestion: valores.ciudad_gestion
+                },
+                ACTIVIDAD_ECONOMICA: {
+                    actividad_economica: valores.actividad_economica,
+                    empresa_labora: valores.empresa_labora,
+                    fecha_vinculacion: valores.fecha_vinculacion,
+                    direccion_empresa: valores.direccion_empresa,
+                    telefono_empresa: valores.telefono_empresa,
+                    tipo_contrato: valores.tipo_contrato,
+                    cargo_actual: valores.cargo_actual
+                },
+                INFORMACION_FINANCIERA: {
+                    ingresos: valores.ingresos,
+                    valor_inmueble: valores.valor_inmueble,
+                    cuota_inicial: valores.cuota_inicial,
+                    porcentaje_financiar: valores.porcentaje_financiar,
+                    total_egresos: valores.total_egresos,
+                    total_activos: valores.total_activos,
+                    total_pasivos: valores.total_pasivos
+                },
+                PRODUCTO_SOLICITADO: {
+                    tipo_credito: valores.tipo_credito,
+                    plazo_meses: valores.plazo_meses,
+                    segundo_titular: valores.segundo_titular,
+                    observacion: valores.observacion
+                },
+                SOLICITUDES: {
+                    banco: valores.banco
+                },
+                DATA_ASESOR: {
+                    asesor: cedulaUsuario
+                }
+            };
+
+            const res = await ModeloVentas.actualizarDatosVenta(datosOrganizados);
+
+            if (res.status == 200) {
+                swalAlert.mostrarAlertaSatisfactorio("Se actualizo el registro de la venta correctamente");
+                // Miscelaneas.recargarPagina(1000);
+            } else {
+                swalAlert.mostrarMensajeError("Error al actualizar la venta")
+            }
+
+        } catch (error) {
+            console.log(error)
+            swalAlert.mostrarMensajeError("Hubo un error al actualizar la venta")
+        }
+    },
 
 
 
