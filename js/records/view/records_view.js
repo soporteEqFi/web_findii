@@ -38,53 +38,61 @@ const Vista  = {
                 // Aplicar clases de estado según el valor
                 if (columna === 'estado') {
                     const estado = dato[columna];
-                    const estadoSelect = document.createElement('select');
-                    estadoSelect.setAttribute('id', 'actualizarEstado');
-                    
-                    const estadosPosibles = [
-                        estado, 'Pendiente', 'Desembolso', 'Aprobado'
-                    ];
+                    const rol = localStorage.getItem('rol');
 
-                    estadosPosibles.forEach(estadoOpt => {
-                        const option = document.createElement('option');
-                        option.value = estadoOpt;
-                        option.textContent = estadoOpt;
-                        estadoSelect.appendChild(option);
-                    });
+                    if (rol.toLowerCase() === 'asesor') {
+                        // Para asesores, solo mostrar el estado como texto
+                        celda.textContent = estado;
+                    } else {
+                        // Para otros roles, mantener el select
+                        const estadoSelect = document.createElement('select');
+                        estadoSelect.setAttribute('id', 'actualizarEstado');
+                        
+                        const estadosPosibles = [
+                            estado, 'Pendiente', 'Desembolsado', 'Radicado', 'Aprobado', 'Estudio de credito', 'Negado'
+                        ];
 
-                    estadoSelect.value = estado;
+                        estadosPosibles.forEach(estadoOpt => {
+                            const option = document.createElement('option');
+                            option.value = estadoOpt;
+                            option.textContent = estadoOpt;
+                            estadoSelect.appendChild(option);
+                        });
 
-                    // Aplicar clases de color según el estado
-                    if (estado === 'Aprobado' || estado === 'Aprobado') {
-                        estadoSelect.classList.add('estado-verde');
-                    } else if (estado === 'recuperada' || estado === 'temporal' || estado === 'verificado') {
-                        estadoSelect.classList.add('estado-azul');
-                    } else if (estado === 'Pendiente') {
-                        estadoSelect.classList.add('estado-amarillo');
-                    } else if (estado === 'Desembolso' || estado === 'baja' || estado === 'cancelado') {
-                        estadoSelect.classList.add('estado-rojo');
-                    }
+                        estadoSelect.value = estado;
 
-                    estadoSelect.addEventListener('change', async (event) => {
-                        try {
-                            const nuevoEstado = event.target.value;
-                            // swalAlert.mensajeDeCarga("Actualizando estado...");
-                            const cedulaUsuario = dato.numero_documento
-                            const idSolicitante = dato.id_solicitante
-                            const res = await ModeloVentas.editarEstadoDesdeTabla(idSolicitante, nuevoEstado, cedulaUsuario);
-                            if (res.status == 200) {
-                                Controller.mostrarDatos();
-                                Swal.close();
-                            }
-                        } catch (error) {
-                            Swal.close();
-                            console.error(error);
-                            swalAlert.mostrarMensajeError('Error al actualizar el estado');
+                        // Aplicar clases de color según el estado
+                        if (estado === 'Aprobado') {
+                            estadoSelect.classList.add('estado-verde');
+                        } else if (estado === 'Estudio de credito' || estado === 'Desembolso') {
+                            estadoSelect.classList.add('estado-azul');
+                        } else if (estado === 'Pendiente' || estado === 'Radicado') {
+                            estadoSelect.classList.add('estado-amarillo');
+                        } else if (estado === 'Negado') {
+                            estadoSelect.classList.add('estado-rojo');
                         }
-                    });
 
-                    celda.textContent = '';
-                    celda.appendChild(estadoSelect);
+                        estadoSelect.addEventListener('change', async (event) => {
+                            try {
+                                const nuevoEstado = event.target.value;
+                                // swalAlert.mensajeDeCarga("Actualizando estado...");
+                                const cedulaUsuario = dato.numero_documento
+                                const idSolicitante = dato.id_solicitante
+                                const res = await ModeloVentas.editarEstadoDesdeTabla(idSolicitante, nuevoEstado, cedulaUsuario);
+                                if (res.status == 200) {
+                                    Controller.mostrarDatos();
+                                    Swal.close();
+                                }
+                            } catch (error) {
+                                Swal.close();
+                                console.error(error);
+                                swalAlert.mostrarMensajeError('Error al actualizar el estado');
+                            }
+                        });
+
+                        celda.textContent = '';
+                        celda.appendChild(estadoSelect);
+                    }
                 }
 
                 fila.appendChild(celda);
@@ -153,6 +161,7 @@ const Vista  = {
         const plazo_meses = document.getElementById('plazo_meses').value;
         const segundo_titular = document.getElementById('segundo_titular').value;
         const observacion = document.getElementById('observacion').value;
+        const estado = document.getElementById('estado').value;
 
         return {
             nombre_completo,
@@ -188,7 +197,8 @@ const Vista  = {
             tipo_credito,
             plazo_meses,
             segundo_titular,
-            observacion
+            observacion,
+            estado
         }
     },
 
