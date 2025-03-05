@@ -1,6 +1,6 @@
 .modal {
     display: none;
-    /* POr defecto no se muestran en pantalla hasta que se abran */
+    /* Por defecto no se muestran en pantalla hasta que se abran */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -181,4 +181,3 @@
     padding-top: 1.5rem;
     border-top: 1px solid #eee;
 }
-
