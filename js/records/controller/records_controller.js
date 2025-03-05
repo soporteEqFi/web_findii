@@ -272,6 +272,17 @@ const Controller = {
         }
     },
 
+    async actualizarTablaEnSegundoPlano() {
+        try {
+            const datosCombinados = await Controller.mostrarDatos(); // Obtener datos actualizados
+            mostrarTodasLosDatos(datosCombinados);
+        } catch (error) {
+            console.error("Error al actualizar la tabla:", error);
+        } finally {
+            setTimeout(actualizarTablaEnSegundoPlano, 2000); // Espera 2 segundos antes de volver a ejecutarse
+        }
+    },
+    
 
 
     iniciar() {
@@ -280,6 +291,7 @@ const Controller = {
         //Controlador.topMensual();
         //Controlador.topSemanal();
         Menu.opcionesMenu();
+
     }
 
 }

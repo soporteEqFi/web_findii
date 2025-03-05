@@ -80,7 +80,9 @@ const Vista  = {
                                 const idSolicitante = dato.id_solicitante
                                 const res = await ModeloVentas.editarEstadoDesdeTabla(idSolicitante, nuevoEstado, cedulaUsuario);
                                 if (res.status == 200) {
+
                                     Controller.mostrarDatos();
+
                                     Swal.close();
                                 }
                             } catch (error) {
@@ -378,6 +380,9 @@ export default Vista;
 document.addEventListener('DOMContentLoaded', function () {
     Controller.iniciar()
     Vista.mostrarTodasLosDatos()
+    Controller.actualizarTablaEnSegundoPlano()
+
+
 });
 
 // Botón dentro del modal al seleccionar un registro que edita la info de una venta

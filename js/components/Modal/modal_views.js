@@ -26,6 +26,11 @@ const Modales = {
                     .replace(/{{#if \(eq estado 'Pendiente'\)}}selected{{\/if}}/g, estado === 'Pendiente' ? 'selected' : '')
                     .replace(/{{#if \(eq estado 'Aprobado'\)}}selected{{\/if}}/g, estado === 'Aprobado' ? 'selected' : '')
                     .replace(/{{#if \(eq estado 'Desembolso'\)}}selected{{\/if}}/g, estado === 'Desembolso' ? 'selected' : '')
+                    .replace(/{{#if \(eq estado 'Radicado'\)}}selected{{\/if}}/g, estado === 'Radicado' ? 'selected' : '')
+                    .replace(/{{#if \(eq estado 'Negado'\)}}selected{{\/if}}/g, estado === 'Negado' ? 'selected' : '')
+                    .replace(/{{#if \(eq estado 'Estudio_de_credito'\)}}selected{{\/if}}/g, estado === 'Estudio de credito' ? 'selected' : '')
+
+
                     
                 // Continuamos con el resto de reemplazos
                 htmlContent = htmlContent
