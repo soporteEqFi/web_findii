@@ -12,12 +12,23 @@ const Modales = {
     },
     
     editSellModal(modalCuerpo, dato) {
+        console.log(dato)
         const rol = localStorage.getItem('rol')
         fetch('../js/components/Modal/content_types/edit_sell.html')
             .then(response => response.text())
             .then(template => {
-                // Reemplaza los marcadores de posición con los datos
-                let htmlContent = template
+                // Primero reemplazamos el estado para cada opción
+                let htmlContent = template;
+                const estado = dato['estado'] || 'Pendiente';
+                
+                // Reemplazamos la selección para cada estado posible
+                htmlContent = htmlContent
+                    .replace(/{{#if \(eq estado 'Pendiente'\)}}selected{{\/if}}/g, estado === 'Pendiente' ? 'selected' : '')
+                    .replace(/{{#if \(eq estado 'Aprobado'\)}}selected{{\/if}}/g, estado === 'Aprobado' ? 'selected' : '')
+                    .replace(/{{#if \(eq estado 'Desembolso'\)}}selected{{\/if}}/g, estado === 'Desembolso' ? 'selected' : '')
+                    
+                // Continuamos con el resto de reemplazos
+                htmlContent = htmlContent
                     .replace('{{nombre_completo}}', dato['nombre'])
                     .replace('{{tipo_documento}}', dato['tipo_documento'])
                     .replace('{{numero_documento}}', dato['numero_documento']) 
@@ -29,7 +40,7 @@ const Modales = {
                     .replace('{{profesion}}', dato['profesion'])
                     .replace('{{estado_civil}}', dato['estado_civil'])
                     .replace('{{personas_a_cargo}}', dato['personas_a_cargo'])
-                    .replace('{{direccion_residencia}}', dato['direccion_residencia'])
+                    .replace('{{direccion_residencia}}', dato['direccion'])
                     .replace('{{tipo_vivienda}}', dato['tipo_vivienda'])
                     .replace('{{barrio}}', dato['barrio'])
                     .replace('{{departamento}}', dato['departamento'])
@@ -52,11 +63,11 @@ const Modales = {
                     .replace('{{plazo_meses}}', dato['plazo_meses'] || '')
                     .replace('{{segundo_titular}}', dato['segundo_titular'] || '')
                     .replace('{{observacion}}', dato['observacion'] || '')
-    
+
                 modalCuerpo.innerHTML = htmlContent;
 
                 // Si el rol es banco, deshabilitar todos los campos excepto estado y observaciones
-                if (rol === 'banco') {
+                if (rol.toLowerCase() === 'banco') {
                     const inputs = modalCuerpo.querySelectorAll('input, select');
                     inputs.forEach(input => {
                         if (input.id !== 'estado' && input.id !== 'observaciones') {
@@ -65,6 +76,23 @@ const Modales = {
                     });
                 }
 
+                if (rol.toLowerCase() === 'asesor') {
+                    const inputs = modalCuerpo.querySelectorAll('input, select');
+                    inputs.forEach(input => {
+                        if (input.id !== 'observaciones') {
+                            input.disabled = true;
+                        }
+                    });
+                }
+
+                if (rol.toLowerCase() === 'findii') {
+                    const inputs = modalCuerpo.querySelectorAll('input, select');
+                    inputs.forEach(input => {
+                        if (input.id !== 'observaciones') {
+                            input.disabled = true;
+                        }
+                    });
+                }
             })
             .catch(error => {
                 console.error('Error loading HTML template:', error);
