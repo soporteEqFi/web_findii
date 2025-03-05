@@ -29,8 +29,8 @@ const Controlador = {
                 if (rol === "asesor"){
                     Vista.redirigirAgente()
                 }
-                if (rol === "findii"){
-                    Vista.redirigirAgente()
+                if (rol === "calidad"){
+                    Vista.redirigirIndex()
                 }
             }
             else{
