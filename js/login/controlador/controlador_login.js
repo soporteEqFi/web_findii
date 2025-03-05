@@ -30,7 +30,7 @@ const Controlador = {
                     Vista.redirigirAgente()
                 }
                 if (rol === "findii"){
-                    Vista.redirigirFindii()
+                    Vista.redirigirAgente()
                 }
             }
             else{
