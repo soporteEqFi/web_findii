@@ -286,6 +286,7 @@ const Controller = {
 
 
     iniciar() {
+        Vista.botonesCabecera()
         Controller.mostrarDatos();
         // Controlador.estadisticasSemanaMesDiaActual();
         //Controlador.topMensual();

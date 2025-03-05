@@ -372,6 +372,102 @@ const Vista  = {
         }
     },
 
+    botonesCabecera(){
+        const cabecera = document.getElementById('botonesCabecera')
+
+        if (localStorage.getItem("rol").toLowerCase() == "admin") {
+            cabecera.innerHTML = 
+            `
+                <div class="">
+                    <button id="descargarVentas" class="btn-black">Exportar <i
+                        class="fa-solid fa-file-arrow-down"></i></button>
+                </div>
+    
+                <div class="">
+                <button class="btn-success" id="botonAñadirVenta"><i class="fa-solid fa-plus"></i> Radicar solicitud</button>
+                </div>
+            `
+            
+        }else{
+            cabecera.innerHTML = 
+            `
+                <div class="">
+                <button class="btn-success" id="botonAñadirVenta"><i class="fa-solid fa-plus"></i> Radicar solicitud</button>
+                </div>
+            `
+        }
+        const botonAñadirVenta = document.getElementById('botonAñadirVenta');
+        botonAñadirVenta.onclick = function () {
+            Modal.modalCero("targetModalIngresarventa", "cerrar-modal-ingresar-venta")
+            const modalCuerpo = document.getElementById('modalCuerpoAñadirVenta');
+            Modales.modalContent(modalCuerpo, "sells_content")
+
+            // //AGREGAR NUEVOS CAMPOS
+            // const form = document.getElementById('companiaSeccion');
+            // const combobox = document.getElementById('compania');
+            // const tipomante = Vista.createTipoMantenimientoOptions
+
+            // combobox.addEventListener('change', () => {
+            //     const seleccion = combobox.value;
+
+            //     // Remove existing labels and inputs
+            //     const existingLabel = document.getElementById('label');
+            //     const existingInput = document.getElementById('mantenimiento');
+            //     const existingTipoLabel = document.getElementById('tipoLabel');
+            //     const existingTipoInput = document.getElementById('tipoMantenimiento');
+
+            //     if (existingLabel) existingLabel.remove();
+            //     if (existingInput) existingInput.remove();
+
+            //     if (seleccion === "no seleccionado") {
+            //         alert("Tienes que seleccionar una compañia")
+            //     }
+
+            //     if (seleccion === 'Naturgy' || seleccion === 'Iberdrola (fuera de península)' || seleccion === 'Iberdrola (Cataluña, Aragón, Baleares, Canarias)') {
+            //         const mantenimientolabel = document.createElement('label');
+            //         mantenimientolabel.textContent = 'Mantenimiento:';
+            //         mantenimientolabel.setAttribute('id', 'label');
+
+            //         const mantenimientoInput = document.createElement('select');
+            //         mantenimientoInput.setAttribute('name', 'mantenimiento');
+            //         mantenimientoInput.setAttribute('id', 'mantenimiento');
+            //         mantenimientoInput.innerHTML = `
+            //         <option value="Sin mantenimiento" selected>Sin mantenimiento</option>
+            //         <option value="Luz y gas">Luz y gas</option>
+            //         <option value="Luz">Luz</option>
+            //         <option value="Gas">Gas</option>
+            //     `;
+
+            //         form.appendChild(mantenimientolabel);
+            //         form.appendChild(mantenimientoInput);
+            //         mantenimientoInput.addEventListener('change', tipomante);
+            //         if (existingTipoLabel) existingTipoLabel.remove();
+            //         if (existingTipoInput) existingTipoInput.remove();
+            //     } else {
+
+            //         if (existingTipoLabel) existingTipoLabel.remove();
+            //         if (existingTipoInput) existingTipoInput.remove();
+            //     }
+
+            //     if (seleccion === "Iberdrola (fuera de península)" || seleccion === "Iberdrola (Cataluña, Aragón, Baleares, Canarias)") {
+            //         const numeroContrato = document.getElementById('numeroContrato')
+            //         numeroContrato.required = 'true';
+            //     }
+            //     return {
+            //         seleccion
+            //     }
+
+            // });
+        };
+        
+        // Boton que permite descargar las ventas de la BD
+        const descargarVentas = document.getElementById('descargarVentas');
+        descargarVentas.onclick = async function () {
+            Controller.descargarVentas()
+        };
+        return cabecera
+    }
+
 
 }
 
@@ -405,69 +501,69 @@ botonEliminar.onclick = function () {
     })
 }
 
-const botonAñadirVenta = document.getElementById('botonAñadirVenta');
-botonAñadirVenta.onclick = function () {
-    Modal.modalCero("targetModalIngresarventa", "cerrar-modal-ingresar-venta")
-    const modalCuerpo = document.getElementById('modalCuerpoAñadirVenta');
-    Modales.modalContent(modalCuerpo, "sells_content")
+// const botonAñadirVenta = document.getElementById('botonAñadirVenta');
+// botonAñadirVenta.onclick = function () {
+//     Modal.modalCero("targetModalIngresarventa", "cerrar-modal-ingresar-venta")
+//     const modalCuerpo = document.getElementById('modalCuerpoAñadirVenta');
+//     Modales.modalContent(modalCuerpo, "sells_content")
 
-    // //AGREGAR NUEVOS CAMPOS
-    // const form = document.getElementById('companiaSeccion');
-    // const combobox = document.getElementById('compania');
-    // const tipomante = Vista.createTipoMantenimientoOptions
+//     // //AGREGAR NUEVOS CAMPOS
+//     // const form = document.getElementById('companiaSeccion');
+//     // const combobox = document.getElementById('compania');
+//     // const tipomante = Vista.createTipoMantenimientoOptions
 
-    // combobox.addEventListener('change', () => {
-    //     const seleccion = combobox.value;
+//     // combobox.addEventListener('change', () => {
+//     //     const seleccion = combobox.value;
 
-    //     // Remove existing labels and inputs
-    //     const existingLabel = document.getElementById('label');
-    //     const existingInput = document.getElementById('mantenimiento');
-    //     const existingTipoLabel = document.getElementById('tipoLabel');
-    //     const existingTipoInput = document.getElementById('tipoMantenimiento');
+//     //     // Remove existing labels and inputs
+//     //     const existingLabel = document.getElementById('label');
+//     //     const existingInput = document.getElementById('mantenimiento');
+//     //     const existingTipoLabel = document.getElementById('tipoLabel');
+//     //     const existingTipoInput = document.getElementById('tipoMantenimiento');
 
-    //     if (existingLabel) existingLabel.remove();
-    //     if (existingInput) existingInput.remove();
+//     //     if (existingLabel) existingLabel.remove();
+//     //     if (existingInput) existingInput.remove();
 
-    //     if (seleccion === "no seleccionado") {
-    //         alert("Tienes que seleccionar una compañia")
-    //     }
+//     //     if (seleccion === "no seleccionado") {
+//     //         alert("Tienes que seleccionar una compañia")
+//     //     }
 
-    //     if (seleccion === 'Naturgy' || seleccion === 'Iberdrola (fuera de península)' || seleccion === 'Iberdrola (Cataluña, Aragón, Baleares, Canarias)') {
-    //         const mantenimientolabel = document.createElement('label');
-    //         mantenimientolabel.textContent = 'Mantenimiento:';
-    //         mantenimientolabel.setAttribute('id', 'label');
+//     //     if (seleccion === 'Naturgy' || seleccion === 'Iberdrola (fuera de península)' || seleccion === 'Iberdrola (Cataluña, Aragón, Baleares, Canarias)') {
+//     //         const mantenimientolabel = document.createElement('label');
+//     //         mantenimientolabel.textContent = 'Mantenimiento:';
+//     //         mantenimientolabel.setAttribute('id', 'label');
 
-    //         const mantenimientoInput = document.createElement('select');
-    //         mantenimientoInput.setAttribute('name', 'mantenimiento');
-    //         mantenimientoInput.setAttribute('id', 'mantenimiento');
-    //         mantenimientoInput.innerHTML = `
-    //         <option value="Sin mantenimiento" selected>Sin mantenimiento</option>
-    //         <option value="Luz y gas">Luz y gas</option>
-    //         <option value="Luz">Luz</option>
-    //         <option value="Gas">Gas</option>
-    //     `;
+//     //         const mantenimientoInput = document.createElement('select');
+//     //         mantenimientoInput.setAttribute('name', 'mantenimiento');
+//     //         mantenimientoInput.setAttribute('id', 'mantenimiento');
+//     //         mantenimientoInput.innerHTML = `
+//     //         <option value="Sin mantenimiento" selected>Sin mantenimiento</option>
+//     //         <option value="Luz y gas">Luz y gas</option>
+//     //         <option value="Luz">Luz</option>
+//     //         <option value="Gas">Gas</option>
+//     //     `;
 
-    //         form.appendChild(mantenimientolabel);
-    //         form.appendChild(mantenimientoInput);
-    //         mantenimientoInput.addEventListener('change', tipomante);
-    //         if (existingTipoLabel) existingTipoLabel.remove();
-    //         if (existingTipoInput) existingTipoInput.remove();
-    //     } else {
+//     //         form.appendChild(mantenimientolabel);
+//     //         form.appendChild(mantenimientoInput);
+//     //         mantenimientoInput.addEventListener('change', tipomante);
+//     //         if (existingTipoLabel) existingTipoLabel.remove();
+//     //         if (existingTipoInput) existingTipoInput.remove();
+//     //     } else {
 
-    //         if (existingTipoLabel) existingTipoLabel.remove();
-    //         if (existingTipoInput) existingTipoInput.remove();
-    //     }
+//     //         if (existingTipoLabel) existingTipoLabel.remove();
+//     //         if (existingTipoInput) existingTipoInput.remove();
+//     //     }
 
-    //     if (seleccion === "Iberdrola (fuera de península)" || seleccion === "Iberdrola (Cataluña, Aragón, Baleares, Canarias)") {
-    //         const numeroContrato = document.getElementById('numeroContrato')
-    //         numeroContrato.required = 'true';
-    //     }
-    //     return {
-    //         seleccion
-    //     }
+//     //     if (seleccion === "Iberdrola (fuera de península)" || seleccion === "Iberdrola (Cataluña, Aragón, Baleares, Canarias)") {
+//     //         const numeroContrato = document.getElementById('numeroContrato')
+//     //         numeroContrato.required = 'true';
+//     //     }
+//     //     return {
+//     //         seleccion
+//     //     }
 
-    // });
-};
+//     // });
+// };
 
 
 const botonModalAgregarVenta = document.getElementById('botonModalAgregarVenta');
@@ -582,11 +678,11 @@ btnFiltrarTabla.onclick = function () {
     Tabla.filtrarTabla();
 }
 
-// Boton que permite descargar las ventas de la BD
-const descargarVentas = document.getElementById('descargarVentas');
-descargarVentas.onclick = async function () {
-    Controller.descargarVentas()
-};
+// // Boton que permite descargar las ventas de la BD
+// const descargarVentas = document.getElementById('descargarVentas');
+// descargarVentas.onclick = async function () {
+//     Controller.descargarVentas()
+// };
 
 // Boton que permite filtrar los registros para una fecha en especifico
 const btnBuscarFecha = document.getElementById('btnBuscarFecha');
