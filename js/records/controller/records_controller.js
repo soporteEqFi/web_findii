@@ -5,7 +5,6 @@ import userModel from "../../user/user_model.js";
 import ModeloVentas from "../model/records_model.js";
 import dateUtils from "../../utils/date_utils.js";
 
-
 const Controller = {
 
     async mostrarDatos(){
@@ -247,7 +246,8 @@ const Controller = {
                     tipo_credito: valores.tipo_credito,
                     plazo_meses: valores.plazo_meses,
                     segundo_titular: valores.segundo_titular,
-                    observacion: valores.observacion
+                    observacion: valores.observacion,
+                    estado: valores.estado
                 },
                 SOLICITUDES: {
                     banco: valores.banco
