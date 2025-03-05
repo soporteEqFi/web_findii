@@ -64,7 +64,7 @@ const Vista  = {
                         // Aplicar clases de color según el estado
                         if (estado === 'Aprobado') {
                             estadoSelect.classList.add('estado-verde');
-                        } else if (estado === 'Estudio de credito' || estado === 'Desembolso') {
+                        } else if (estado === 'Estudio de credito' || estado === 'Desembolsado') {
                             estadoSelect.classList.add('estado-azul');
                         } else if (estado === 'Pendiente' || estado === 'Radicado') {
                             estadoSelect.classList.add('estado-amarillo');
