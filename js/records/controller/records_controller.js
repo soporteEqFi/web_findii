@@ -279,7 +279,7 @@ const Controller = {
         } catch (error) {
             console.error("Error al actualizar la tabla:", error);
         } finally {
-            setTimeout(actualizarTablaEnSegundoPlano, 1000); // Espera 2 segundos antes de volver a ejecutarse
+            setTimeout(actualizarTablaEnSegundoPlano, 1000); // Espera 1 segundos antes de volver a ejecutarse
         }
     },
     

@@ -82,6 +82,7 @@ const Vista  = {
                                 if (res.status == 200) {
 
                                     Controller.mostrarDatos();
+                                    // Controller.actualizarTablaEnSegundoPlano()
 
                                     Swal.close();
                                 }
@@ -421,8 +422,7 @@ export default Vista;
 
 document.addEventListener('DOMContentLoaded', function () {
     Controller.iniciar()
-    Vista.mostrarTodasLosDatos()
-    Controller.actualizarTablaEnSegundoPlano()
+    // Vista.mostrarTodasLosDatos()
 
 
 });
