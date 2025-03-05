@@ -19,7 +19,6 @@ const Vista = {
     redirigirFindii(){
         location.href ="./findii.html"
     },
-
 }
 export default Vista;
 
