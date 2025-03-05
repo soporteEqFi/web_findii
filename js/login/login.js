@@ -16,6 +16,9 @@ const Vista = {
     redirigirAgente(){
         location.href ="./agent.html"
     },
+    redirigirFindii(){
+        location.href ="./findii.html"
+    },
 
 }
 export default Vista;
