@@ -85,14 +85,14 @@ const Modales = {
                     });
                 }
 
-                if (rol.toLowerCase() === 'findii') {
-                    const inputs = modalCuerpo.querySelectorAll('input, select');
-                    inputs.forEach(input => {
-                        if (input.id !== 'observaciones') {
-                            input.disabled = true;
-                        }
-                    });
-                }
+                // if (rol.toLowerCase() === 'findii') {
+                //     const inputs = modalCuerpo.querySelectorAll('input, select');
+                //     inputs.forEach(input => {
+                //         if (input.id !== 'observaciones') {
+                //             input.disabled = true;
+                //         }
+                //     });
+                // }
             })
             .catch(error => {
                 console.error('Error loading HTML template:', error);
