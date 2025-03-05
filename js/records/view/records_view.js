@@ -387,6 +387,12 @@ const Vista  = {
                 <button class="btn-success" id="botonAñadirVenta"><i class="fa-solid fa-plus"></i> Radicar solicitud</button>
                 </div>
             `
+                    // Boton que permite descargar las ventas de la BD
+
+                const descargarVentas = document.getElementById('descargarVentas');
+                descargarVentas.onclick = async function () {
+                    Controller.descargarVentas()
+                };
             
         }else{
             cabecera.innerHTML = 
@@ -396,75 +402,15 @@ const Vista  = {
                 </div>
             `
         }
+
         const botonAñadirVenta = document.getElementById('botonAñadirVenta');
         botonAñadirVenta.onclick = function () {
             Modal.modalCero("targetModalIngresarventa", "cerrar-modal-ingresar-venta")
             const modalCuerpo = document.getElementById('modalCuerpoAñadirVenta');
             Modales.modalContent(modalCuerpo, "sells_content")
-
-            // //AGREGAR NUEVOS CAMPOS
-            // const form = document.getElementById('companiaSeccion');
-            // const combobox = document.getElementById('compania');
-            // const tipomante = Vista.createTipoMantenimientoOptions
-
-            // combobox.addEventListener('change', () => {
-            //     const seleccion = combobox.value;
-
-            //     // Remove existing labels and inputs
-            //     const existingLabel = document.getElementById('label');
-            //     const existingInput = document.getElementById('mantenimiento');
-            //     const existingTipoLabel = document.getElementById('tipoLabel');
-            //     const existingTipoInput = document.getElementById('tipoMantenimiento');
-
-            //     if (existingLabel) existingLabel.remove();
-            //     if (existingInput) existingInput.remove();
-
-            //     if (seleccion === "no seleccionado") {
-            //         alert("Tienes que seleccionar una compañia")
-            //     }
-
-            //     if (seleccion === 'Naturgy' || seleccion === 'Iberdrola (fuera de península)' || seleccion === 'Iberdrola (Cataluña, Aragón, Baleares, Canarias)') {
-            //         const mantenimientolabel = document.createElement('label');
-            //         mantenimientolabel.textContent = 'Mantenimiento:';
-            //         mantenimientolabel.setAttribute('id', 'label');
-
-            //         const mantenimientoInput = document.createElement('select');
-            //         mantenimientoInput.setAttribute('name', 'mantenimiento');
-            //         mantenimientoInput.setAttribute('id', 'mantenimiento');
-            //         mantenimientoInput.innerHTML = `
-            //         <option value="Sin mantenimiento" selected>Sin mantenimiento</option>
-            //         <option value="Luz y gas">Luz y gas</option>
-            //         <option value="Luz">Luz</option>
-            //         <option value="Gas">Gas</option>
-            //     `;
-
-            //         form.appendChild(mantenimientolabel);
-            //         form.appendChild(mantenimientoInput);
-            //         mantenimientoInput.addEventListener('change', tipomante);
-            //         if (existingTipoLabel) existingTipoLabel.remove();
-            //         if (existingTipoInput) existingTipoInput.remove();
-            //     } else {
-
-            //         if (existingTipoLabel) existingTipoLabel.remove();
-            //         if (existingTipoInput) existingTipoInput.remove();
-            //     }
-
-            //     if (seleccion === "Iberdrola (fuera de península)" || seleccion === "Iberdrola (Cataluña, Aragón, Baleares, Canarias)") {
-            //         const numeroContrato = document.getElementById('numeroContrato')
-            //         numeroContrato.required = 'true';
-            //     }
-            //     return {
-            //         seleccion
-            //     }
-
-            // });
         };
         
-        // Boton que permite descargar las ventas de la BD
-        const descargarVentas = document.getElementById('descargarVentas');
-        descargarVentas.onclick = async function () {
-            Controller.descargarVentas()
-        };
+
         return cabecera
     }
 

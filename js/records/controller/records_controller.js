@@ -12,7 +12,7 @@ const Controller = {
             swalAlert.mensajeDeCarga("Actualizando tabla...")
             let response = await ModeloVentas.mostrarDatos();
 
-            console.log(response)
+            // console.log(response)
             if (response.status === 500) {
                 response = await ModeloVentas.mostrarDatos();
             }
@@ -279,7 +279,7 @@ const Controller = {
         } catch (error) {
             console.error("Error al actualizar la tabla:", error);
         } finally {
-            setTimeout(actualizarTablaEnSegundoPlano, 2000); // Espera 2 segundos antes de volver a ejecutarse
+            setTimeout(actualizarTablaEnSegundoPlano, 1000); // Espera 2 segundos antes de volver a ejecutarse
         }
     },
     

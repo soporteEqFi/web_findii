@@ -26,7 +26,7 @@ const Menu = {
             const empresaNombre = res.data['empresa']
             const logo = res.data['imagen_aliado']
 
-            console.log(rolUsuario)
+            
 
             if (localStorage.getItem("rol").toLowerCase() == "admin") {
                 this.opcionesMenuAdmin(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
