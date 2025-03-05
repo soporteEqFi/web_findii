@@ -40,8 +40,8 @@ const Menu = {
                 this.opcionesMenuAsesor(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
 
-            if (localStorage.getItem("rol").toLowerCase() == "findii") {
-                this.opcionesMenuFindii(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
+            if (localStorage.getItem("rol").toLowerCase() == "calidad") {
+                this.opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
 
         } // Este ELSE no estaba añadido, lo estoy probando 08-02-2025
@@ -64,7 +64,6 @@ const Menu = {
         opcionesMenu.innerHTML =
             `
             <a class="" href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./profile.html"><i class="fa-solid fa-chart-simple"></i> profile</a>
             <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
             <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
@@ -122,7 +121,7 @@ const Menu = {
         return opcionesMenu
     },
 
-    opcionesMenuFindii(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo){
+    opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo){
         nombreEmpresa.innerHTML = 
         `
         <img src="${logo}" alt="">
@@ -130,7 +129,7 @@ const Menu = {
         `
         opcionesMenu.innerHTML =
         `
-            <a href="./agent.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
             <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
             <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
