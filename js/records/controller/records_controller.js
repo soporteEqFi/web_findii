@@ -25,6 +25,8 @@ const Controller = {
             
             // Extraer registros asegurando que sean arrays
             const registros = response.data.registros || {};
+
+            console.log(registros)
             const solicitantes = registros.solicitantes ?? [];
             const agents = registros.agents_info ?? [];
             const activity = registros.economic_activity ?? [];
@@ -32,6 +34,9 @@ const Controller = {
             const location = registros.location ?? [];
             const product = registros.product ?? [];
             const solicitud = registros.solicitud ?? [];
+            const documentos = registros.documentos ?? [];
+
+            console.log(documentos)
 
         // Combinar datos por cada solicitante
             const datosCombinados = solicitantes.map(solicitante => {
@@ -41,8 +46,9 @@ const Controller = {
             const ubicacion = location.find(l => l.solicitante_id === solicitante.solicitante_id) || {};
             const producto = product.find(p => p.solicitante_id === solicitante.solicitante_id) || {};
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
+            const documentosDelSolicitante = documentos.filter(d => d.id_solicitante === solicitante.solicitante_id) || [];
 
-            
+            console.log(documentosDelSolicitante)
 
                 return {
                     //info solicitante
@@ -97,6 +103,8 @@ const Controller = {
                     //banco
                     banco: solicitudInfo.banco || "N/A",
                     created_at: solicitudInfo.created_at || "N/A",
+                    //documentos
+                    ruta_imagen: documentosDelSolicitante.map(doc => doc.imagen),
                 };
             });
     
@@ -113,53 +121,53 @@ const Controller = {
     },
 
     async insertarDatos() {
-        const { nombre_completo, tipo_documento, numero_documento, fecha_nacimiento, 
-                numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
-                personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
-                estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
-                direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
-                valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
-                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco } = Vista.enviarDatosFormulario()
-
-        console.log({
-            nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,
-            numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
-            personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
-            estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
-            direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
-            valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
-            total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco
-        });
+        const datos = Vista.enviarDatosFormulario()
 
         try {
             const cedula = localStorage.getItem('cedula')
             const datos_agente = await userModel.getUserInfo(cedula)
-            
             console.log("los datos del agente son:")
             console.log(datos_agente)
             const asesor = datos_agente.data["cedula"]
-            // const fechaActual = dateUtils.get_actual_date()
 
-            // console.log(fechaActual)
+            // Crear FormData para los archivos
+            const formData = new FormData()
 
-            const res = await ModeloVentas.insertData({
-                nombre_completo, tipo_documento, numero_documento, fecha_nacimiento,
-                numero_celular, correo_electronico, nivel_estudio, profesion, estado_civil,
-                personas_a_cargo, direccion_residencia, tipo_vivienda, barrio, departamento,
-                estrato, ciudad_gestion, actividad_economica, empresa_labora, fecha_vinculacion,
-                direccion_empresa, telefono_empresa, tipo_contrato, cargo_actual, ingresos,
-                valor_inmueble, cuota_inicial, porcentaje_financiar, total_egresos, total_activos,
-                total_pasivos, tipo_credito, plazo_meses, segundo_titular, observacion, banco, asesor
-            })
+            // Agregar cada archivo al FormData
+            if (datos.archivos) {
+                for (let i = 0; i < datos.archivos.length; i++) {
+                    formData.append('archivos', datos.archivos[i])
+                }
+            }
+
+            // Agregar el resto de datos al FormData
+            for (let key in datos) {
+                if (key !== 'archivos') {
+                    formData.append(key, datos[key])
+                }
+            }
+
+            // Agregar el asesor al FormData
+            formData.append('asesor_usuario', asesor)
+
+            formData.forEach((valor, clave) => {
+                console.log(clave, valor);
+            });
+
+            // Verificar los datos antes de enviar
+            console.log("Datos a enviar al modelo:")
+            console.log(formData)
+
+            const res = await ModeloVentas.insertData(formData)
 
             if (res.status == 200) {
                 swalAlert.mostrarAlertaSatisfactorio("Se agregó el registro correctamente");
-                // Miscelaneas.recargarPagina(1000)
             } else {
                 swalAlert.mostrarMensajeError("Hubo un error al insertar el registro")
             }
 
         } catch (error) {
+            console.log("Error en insertarDatos:")
             console.log(error)
             swalAlert.mostrarMensajeError("Error al insertar los datos")
         }
