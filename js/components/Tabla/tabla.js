@@ -25,12 +25,17 @@ const Tabla = {
             
             // Extraer registros asegurando que sean arrays
             const registros = response.data.registros || {};
+
+            console.log(registros)
             const solicitantes = registros.SOLICITANTES ?? [];
             const activity = registros.ACTIVIDAD_ECONOMICA ?? [];
             const financial = registros.INFORMACION_FINANCIERA ?? [];
             const location = registros.UBICACION ?? [];
             const product = registros.PRODUCTO_SOLICITADO ?? [];
             const solicitud = registros.SOLICITUDES ?? [];
+            const documentos = registros.PRUEBA_IMAGENES ?? [];
+
+            console.log(documentos)
 
         // Combinar datos por cada solicitante
             const datosCombinados = solicitantes.map(solicitante => {
@@ -39,6 +44,9 @@ const Tabla = {
             const ubicacion = location.find(l => l.solicitante_id === solicitante.solicitante_id) || {};
             const producto = product.find(p => p.solicitante_id === solicitante.solicitante_id) || {};
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
+            const documento = documentos.find(d => d.solicitante_id === solicitante.solicitante_id) || {};
+
+            console.log(documento)
 
                 return {
                     //info solicitante
@@ -87,7 +95,7 @@ const Tabla = {
                     estado: producto.estado || "N/A",
 
                     //agente
-                 
+                    archivos: documento.ruta_imagen || "N/A",
 
                     //banco
                     banco: solicitudInfo.banco || "N/A",
