@@ -9,6 +9,8 @@ const Vista  = {
 
     mostrarTodasLosDatos(datosCombinados){
         const datos = datosCombinados
+
+        console.log(datos)
        
         const tablaDatos = document.getElementById('tablaDatos');
         tablaDatos.innerHTML = '';
@@ -241,6 +243,7 @@ const Vista  = {
         const segundo_titular = document.getElementById('segundo_titular').value;
         const observacion = document.getElementById('observacion').value;
         const banco = document.getElementById('banco').value;
+        const archivos = document.getElementById('archivos_adjuntos').files;
         // const asesor = document.getElementById('asesor').value;
 
         // const camposVacios = [];
@@ -304,6 +307,7 @@ const Vista  = {
             segundo_titular,
             observacion,
             banco,
+            archivos
             // asesor
         };
     },
@@ -438,14 +442,14 @@ botonEditar.onclick = function () {
 }
 
 // Botón dentro del modal al seleccionar un registro que elimina la info de una venta
-const botonEliminar = document.getElementById('botonEliminar');
-botonEliminar.onclick = function () {
-    swalAlert.confirmarAccion({
-        texto: 'Se eliminará el registro de forma permanente',
-        funcionAlAceptar: Controlador.eliminarVenta,
-        mensajeAlCancelar: 'No se ha eliminado nada'
-    })
-}
+// const botonEliminar = document.getElementById('botonEliminar');
+// botonEliminar.onclick = function () {
+//     swalAlert.confirmarAccion({
+//         texto: 'Se eliminará el registro de forma permanente',
+//         funcionAlAceptar: Controlador.eliminarVenta,
+//         mensajeAlCancelar: 'No se ha eliminado nada'
+//     })
+// }
 
 // const botonAñadirVenta = document.getElementById('botonAñadirVenta');
 // botonAñadirVenta.onclick = function () {
