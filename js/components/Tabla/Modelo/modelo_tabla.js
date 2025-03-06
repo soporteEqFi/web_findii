@@ -10,7 +10,7 @@ const ModeloTabla = {
         console.log(datos_enviar)
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/datos-por-fecha/",
+            url: "https://equitisoporte.pythonanywhere.com/datos-por-fecha/",
             headers: config.headers,
             data: datos_enviar
 
@@ -27,7 +27,7 @@ const ModeloTabla = {
 
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/mostrar-por-intervalo/",
+            url: "https://equitisoporte.pythonanywhere.com/mostrar-por-intervalo/",
             headers: config.headers,
             data: datosEnviar
         })
@@ -44,7 +44,7 @@ const ModeloTabla = {
     
         const res = await axios({
           method: "POST",
-          url: "http://127.0.0.1:5000/mostrar-por-intervalo-leader/",
+          url: "https://equitisoporte.pythonanywhere.com/mostrar-por-intervalo-leader/",
           headers: config.headers,
           data: datosEnviar
         })
@@ -60,7 +60,7 @@ const ModeloTabla = {
 
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/filtrar-tabla/",
+            url: "https://equitisoporte.pythonanywhere.com/filtrar-tabla/",
             headers: config.headers,
             data: datosEnviar
         })

@@ -5,7 +5,7 @@ const Model = {
     async getUserInfo(id) {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/get-user-info/" + id,
+            url: "https://equitisoporte.pythonanywhere.com/get-user-info/" + id,
             headers: config.headers,
         });
         return res
@@ -14,7 +14,7 @@ const Model = {
     async get_agent_info(id) {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/get-agent-info/" + id,
+            url: "https://equitisoporte.pythonanywhere.com/get-agent-info/" + id,
             headers: config.headers,
         });
         return res
@@ -23,7 +23,7 @@ const Model = {
     async get_solicitante_info(id) {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/get-solicitante-info/" + id,
+            url: "https://equitisoporte.pythonanywhere.com/get-solicitante-info/" + id,
             headers: config.headers,
         });
         return res
@@ -39,7 +39,7 @@ const Model = {
         }
         const res = axios({
             method: "PUT",
-            url: "http://127.0.0.1:5000/update-user/",
+            url: "https://equitisoporte.pythonanywhere.com/update-user/",
             data: data_agentes,
             headers: config.headers,
           });

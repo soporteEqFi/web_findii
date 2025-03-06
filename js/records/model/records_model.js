@@ -6,7 +6,7 @@ const Modelo = {
     async mostrarDatos() {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/get-all-data/",
+            url: "https://equitisoporte.pythonanywhere.com/get-all-data/",
             headers: config.headers,
         });
         return res
@@ -60,7 +60,7 @@ const Modelo = {
 
         const res = axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/add-record/",
+            url: "https://equitisoporte.pythonanywhere.com/add-record/",
             headers: config.headers,
             data: data
         });
@@ -70,7 +70,7 @@ const Modelo = {
     async descargarCSV() {
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/descargar-ventas/",
+            url: "https://equitisoporte.pythonanywhere.com/descargar-ventas/",
             headers: config.headers,
             responseType: 'arraybuffer',  // Indica a Axios que esperamos una respuesta binaria
         });
@@ -87,7 +87,7 @@ const Modelo = {
         
         const res = await axios({
             method: "PUT",
-            url: "http://127.0.0.1:5000/editar-estado/",
+            url: "https://equitisoporte.pythonanywhere.com/editar-estado/",
             data: infoEstado,
             headers: config.headers,
         });
@@ -100,7 +100,7 @@ const Modelo = {
         console.log(datosOrganizados)
         const res = await axios({
             method: "PUT",
-            url: "http://127.0.0.1:5000/edit-record/",
+            url: "https://equitisoporte.pythonanywhere.com/edit-record/",
             data: datosOrganizados,
             headers: config.headers,
         });

@@ -48,7 +48,7 @@ const Controller = {
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
             const documentosDelSolicitante = documentos.filter(d => d.id_solicitante === solicitante.solicitante_id) || [];
 
-            console.log(documentosDelSolicitante)
+            // console.log(documentosDelSolicitante)
 
                 return {
                     //info solicitante
