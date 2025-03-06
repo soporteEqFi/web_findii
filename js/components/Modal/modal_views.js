@@ -68,8 +68,18 @@ const Modales = {
                     .replace('{{plazo_meses}}', dato['plazo_meses'] || '')
                     .replace('{{segundo_titular}}', dato['segundo_titular'] || '')
                     .replace('{{observacion}}', dato['observacion'] || '')
+                    .replace('{{replace_archivos_ruta}}', dato['ruta_imagen'] ? dato['ruta_imagen'].map(ruta => `<a href="${ruta}" target="_blank"><i class="fa-solid fa-2xl fa-file-lines"></i></a>`).join(' ') : '')
 
                 modalCuerpo.innerHTML = htmlContent;
+            
+                if (rol.toLowerCase()) {
+                    const inputs = modalCuerpo.querySelectorAll('input, select');
+                    inputs.forEach(input => {
+                        if (input.id == 'numero_documento') {
+                            input.disabled = true;
+                        }
+                    });
+                }
 
                 // Si el rol es banco, deshabilitar todos los campos excepto estado y observaciones
                 if (rol.toLowerCase() === 'banco') {
