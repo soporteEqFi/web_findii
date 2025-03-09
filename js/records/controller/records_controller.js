@@ -36,8 +36,6 @@ const Controller = {
             const solicitud = registros.solicitud ?? [];
             const documentos = registros.documentos ?? [];
 
-            console.log(documentos)
-
         // Combinar datos por cada solicitante
             const datosCombinados = solicitantes.map(solicitante => {
             const agente = agents.find(a => a.asesor_id === solicitante.solicitante_id) || {};
@@ -47,6 +45,8 @@ const Controller = {
             const producto = product.find(p => p.solicitante_id === solicitante.solicitante_id) || {};
             const solicitudInfo = solicitud.find(s => s.solicitante_id === solicitante.solicitante_id) || {};
             const documentosDelSolicitante = documentos.filter(d => d.id_solicitante === solicitante.solicitante_id) || [];
+
+            console.log(solicitudInfo.banco)
 
             // console.log(documentosDelSolicitante)
 

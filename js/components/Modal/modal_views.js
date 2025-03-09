@@ -20,6 +20,7 @@ const Modales = {
                 // Primero reemplazamos el estado para cada opción
                 let htmlContent = template;
                 const estado = dato['estado'] || 'Pendiente';
+                const banco = dato['banco'] || 'Bancolombia';
                 
                 // Reemplazamos la selección para cada estado posible
                 htmlContent = htmlContent
@@ -30,7 +31,12 @@ const Modales = {
                     .replace(/{{#if \(eq estado 'Negado'\)}}selected{{\/if}}/g, estado === 'Negado' ? 'selected' : '')
                     .replace(/{{#if \(eq estado 'Estudio_de_credito'\)}}selected{{\/if}}/g, estado === 'Estudio de credito' ? 'selected' : '')
 
-
+                // Reemplazamos la selección para cada banco posible
+                htmlContent = htmlContent
+                    .replace(/{{#if \(eq banco 'Bancolombia'\)}}selected{{\/if}}/g, banco === 'Bancolombia' ? 'selected' : '')
+                    .replace(/{{#if \(eq banco 'BBVA'\)}}selected{{\/if}}/g, banco === 'BBVA' ? 'selected' : '')
+                    .replace(/{{#if \(eq banco 'Scotia'\)}}selected{{\/if}}/g, banco === 'Scotia' ? 'selected' : '')
+                    .replace(/{{#if \(eq banco 'Davivienda'\)}}selected{{\/if}}/g, banco === 'Davivienda' ? 'selected' : '')
                     
                 // Continuamos con el resto de reemplazos
                 htmlContent = htmlContent

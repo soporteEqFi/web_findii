@@ -372,6 +372,19 @@
                         </select>
                     </div>
                 </div>
+                <div class="campo compania">
+                    <div class="texto">
+                        <p>Banco:</p>
+                    </div>
+                    <div class="entrada">
+                        <select id="banco">
+                            <option value="Bancolombia" {{#if (eq banco 'Bancolombia')}}selected{{/if}}>Bancolombia</option>
+                            <option value="BBVA" {{#if (eq banco 'BBVA')}}selected{{/if}}>BBVA</option>
+                            <option value="Scotia" {{#if (eq banco 'Scotia')}}selected{{/if}}>Scotia</option>
+                            <option value="Davivienda" {{#if (eq banco 'Davivienda')}}selected{{/if}}>Davivienda</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="campo compania campo-completo">
                     <div class="texto">
