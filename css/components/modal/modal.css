@@ -19,8 +19,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 60vw; /* Reducir un poco el ancho */
-    margin: 3% auto; /* Centrar horizontalmente */
-    max-height: 80vh; /* Altura máxima */
+    margin: 1% auto; /* Centrar horizontalmente */
+    max-height: 85vh; /* Altura máxima */
     overflow-y: auto; /* Permitir scroll si el contenido es muy largo */
 }
 
@@ -85,7 +85,7 @@
     display: flex;
     column-gap: 2vw;
     overflow: auto;
-    height: 50vh;
+    height: 70vh;
     justify-content: space-between;
 }
 
@@ -122,7 +122,7 @@
 .seccion {
     background-color: #fff;
     border-radius: 8px;
-    padding: 1.5rem;
+    padding: 0.5rem 1.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -177,7 +177,5 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
     border-top: 1px solid #eee;
 }
