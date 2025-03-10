@@ -16,11 +16,7 @@ const Modal = {
             modal.style.display = "none";
         }
     
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        // Eliminado el evento de click fuera para que no se cierre
     },
     
     modalCero(targetModal, claseCerrarModal) {
@@ -38,11 +34,7 @@ const Modal = {
             modal.style.display = "none";
         }
     
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        // Eliminado el evento de click fuera para que no se cierre
     },
     
 }

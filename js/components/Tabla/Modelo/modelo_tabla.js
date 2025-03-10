@@ -7,27 +7,10 @@ const ModeloTabla = {
         const datos_enviar = {
             fecha_venta: fechaFormateada
         }
-
+        console.log(datos_enviar)
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5700/mostrar-por-fecha/",
-            headers: config.headers,
-            data: datos_enviar
-
-        });
-        return res
-    },
-
-    async mostrarVentasPorFechaTeamLeader(fechaFormateada, liderEquipo) {
-
-        const datos_enviar = {
-            fecha_venta: fechaFormateada,
-            lider_equipo: liderEquipo
-        }
-
-        const res = await axios({
-            method: "POST",
-            url: "http://127.0.0.1:5700/mostrar-por-fecha-leader/",
+            url: "https://equitisoporte.pythonanywhere.com/datos-por-fecha/",
             headers: config.headers,
             data: datos_enviar
 
@@ -44,7 +27,7 @@ const ModeloTabla = {
 
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5700/mostrar-por-intervalo/",
+            url: "https://equitisoporte.pythonanywhere.com/mostrar-por-intervalo/",
             headers: config.headers,
             data: datosEnviar
         })
@@ -58,12 +41,10 @@ const ModeloTabla = {
           fecha_inicial: fechaFormateadaInicio,
           fecha_final: fechaFormateadaFinal
         }
-
-        console.log(datosEnviar)
     
         const res = await axios({
           method: "POST",
-          url: "http://127.0.0.1:5700/mostrar-por-intervalo-leader/",
+          url: "https://equitisoporte.pythonanywhere.com/mostrar-por-intervalo-leader/",
           headers: config.headers,
           data: datosEnviar
         })
@@ -79,10 +60,11 @@ const ModeloTabla = {
 
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:5700/filtrar-tabla/",
+            url: "https://equitisoporte.pythonanywhere.com/filtrar-tabla/",
             headers: config.headers,
             data: datosEnviar
         })
+
         return res
     },
 

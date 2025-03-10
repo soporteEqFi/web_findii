@@ -1,0 +1,141 @@
+@import url(../config/global.css);
+@import url(../config/grid.css);
+@import url(./modal/modal.css);
+/*@import url(./componentes/menu.css);*/
+@import url(./menu/menu-opciones.css); 
+
+.contenido{	
+	display: grid;
+	grid-template-areas: 
+	"titulo titulo"
+	"foto informacion";
+	grid-template-rows: 15vh auto;
+	grid-template-columns: 30vw 50vw;
+    place-content: center;
+	height: auto;
+	min-height: 70vh;
+	border-radius: 0.5vw;
+	margin-top: 7vh;
+	margin-bottom: 3vh;
+	background-color: var(--blanco);
+}
+
+ .contenido .titulo-central{
+	display: grid;
+	grid-area: titulo;
+	margin-left: 5vw;
+	align-items: center;
+}
+
+ .contenido .titulo-central p{
+	font-size: 2vw;
+	font-weight: 400;
+}
+
+ .contenido .contenedor-foto-perfil{
+	grid-area: foto;
+	display: grid;
+	justify-content: center;
+}
+
+ .contenido .contenedor-foto-perfil .foto-perfil img{
+	height: 35vh;
+	width: auto;
+}
+
+ .contenido .contenedor-informacion{
+	display: grid;
+	grid-area: informacion;
+	row-gap: 2vw;
+}
+
+ .contenido .contenedor-informacion .botones-perfil{
+	text-align: end;
+}
+
+ .contenido .contenedor-informacion .informacion-perfil{
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 5vw;
+	row-gap: 4vh;
+}
+
+ .contenido .contenedor-informacion .informacion-perfil .campo .titulo p{
+	font-size: 1.4vw;
+}
+
+ .contenido .contenedor-informacion .informacion-perfil .campo .texto p{
+	font-size: 1.2vw;
+	color: #888888;
+ }
+
+ 
+/* INFORMACION DATOS (MODAL)*/
+
+/* EST ESTA DANDO PROBLEMAS EN EL MODAL PRINCIPAL */
+
+/* .modal-contenido {
+	width: 65dvw;
+}
+
+.modal-cuerpo {
+    display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+} */
+
+.modal-cuerpo .lado-izquierdo{
+    display: flex;
+    text-align: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 2dvw 0;
+}
+
+.modal-cuerpo .lado-izquierdo .titulo-central-modal p{
+	font-size: 1.5vw;
+	font-weight: 400;
+	text-transform: capitalize;
+}
+
+.modal-cuerpo .lado-izquierdo .contenedor-foto-perfil-modal .foto-perfil img{
+	height: 30vh;
+	width: auto;
+}
+
+.modal-cuerpo .lado-derecho{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 45dvw;
+}
+.modal-cuerpo .lado-derecho .informacion-agente .lado-izquierdo-editar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+
+}
+.modal-cuerpo .lado-derecho .informacion-agente .lado-derecho-editar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 5vh;
+    column-gap: 2vw;
+    padding: 2vw 0;
+    justify-content: space-around;
+}
+
+.modal-cuerpo input[type=text],
+.modal-cuerpo input[type=date],
+.modal-cuerpo input[type=time],
+.modal-cuerpo input[type=email],
+.modal-cuerpo input[type=password],
+.modal-cuerpo input[type=phone],
+.modal-cuerpo input[type=number],
+.modal-cuerpo select {
+    width: 15vw;
+    font-size: 1vw;
+}

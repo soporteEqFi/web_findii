@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="shortcut icon" href="../img/FINDI2I.png" type="image/x-icon">
+    <title>Perfil</title>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="pagina">
+            <section class="contenedor-pagina">
+
+                <div class="menu-opciones">
+
+                    <div class="contenedor-opciones">
+                        <div class="info-arriba">
+                            <div class="datos-empresa">
+
+                                <figure class="imagen-empresa" id="nombreEmpresa">
+
+                                </figure>
+
+                                <div class="titulo-empresa">
+                                     
+                                </div>
+
+                            </div>
+
+                            <ul class="opciones" id="opcionesMenu">
+
+                            </ul>
+                        </div>
+
+                        <div class="info-abajo">
+                            <div class="info-usuario">
+
+                                <figure>
+                                    <img src="../img/male-profile.svg" alt="">
+                                </figure>
+
+                                <div class="datos-usuario" id="datosUsuarioMenu">
+
+                                </div>
+
+                            </div>
+                            <div class="cerrar-sesion">
+                                <button class="btn-success cerrar-sesion" id="cerrarSesion">Cerrar sesión</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="contenido-pagina">
+                    <div class="contenido">
+    
+                        <div class="titulo-central">
+                            <p>Información del agente</p>
+                        </div>
+    
+                        <div class="contenedor-foto-perfil">
+                            <div class="foto-perfil">
+                                <img src="../img/undraw_male_avatar_g98d.svg" alt="">
+                            </div>
+                        </div>
+    
+                        <div class="contenedor-informacion">
+                            <div class="informacion-perfil" id="informacionPerfil"></div>
+    
+                            <div class="botones-perfil">
+                                <button id="abrirModal" class="btn-success"><i class="fa-solid fa-pen-to-square"></i> Editar perfil</button>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="modal" id="targetModalEditarPerfil">
+                        <div class="modal-contenido">
+                            <div class="titulo modal-cabecera" id="modalCabeceraEditarPerfil">
+                                <a><i class="fa-solid fa-remove cerrar-modal-editar-perfil"></i></a>
+                            </div>
+    
+                            <div class="modal-cuerpo" id="modalCuerpoEditarPerfil">
+    
+                            </div>
+    
+                            <div class="botones modal-footer">
+                                <button id="botonEditar" class="btn-success"><i class="fa-solid fa-pen-to-square"></i> Editar usuario</button>
+                                <button id="modalCambiarContrasena" class="btn-success"><i class="fa-solid fa-pen-to-square"></i> Cambiar contraseña</button>
+                            
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                    
+                </div>
+    
+
+            </section>
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/components/profile.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/1a5bcd4a97.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+
+</html>

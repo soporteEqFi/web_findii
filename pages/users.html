@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/admin.css">
     <link rel="shortcut icon" href="../img/FINDI2I.png" type="image/x-icon">
-    <title>Administrador</title>
-</head>
+    <link rel="stylesheet" href="../css/admin.css">
 
+    <title>Users</title>
+</head>
 <body>
     <div class="hero">
         <div class="pagina">
@@ -66,25 +65,25 @@
 
                             <div class="cabecera">
                                 <div class="titulo">
-                                    <p>Reporte de ventas</p>
+                                    <p>Usuarios</p>
                                 </div>
 
                                 <div class="botones-cabecera" id = "botonesCabecera">
                                     <!-- <div class="">
                                         <button id="descargarVentas" class="btn-black">Exportar <i
                                                 class="fa-solid fa-file-arrow-down"></i></button>
-                                    </div>
+                                    </div>-->
     
-                                    <div class="">
-                                        <button class="btn-success" id="botonAñadirVenta"><i class="fa-solid fa-plus"></i> Radicar solicitud</button>
-                                    </div> -->
+                                     <div class="">
+                                        <button class="btn-success" id="botonAñadirUsuario"><i class="fa-solid fa-plus"></i> Registrar usuario</button>
+                                    </div> 
                                 </div>
     
 
     
                             </div>
     
-                            <div class="filtros-tabla">
+                            <!-- <div class="filtros-tabla">
     
                                 <div class="buscar-fecha">
                                     <div>
@@ -145,7 +144,7 @@
                             </div>
     
                             <div class="filtros-activos" id="contenedorFiltrosActivos">
-                            </div>
+                            </div> -->
     
                             <div class="tabla" id="tablaDatos">
                                 <table>
@@ -181,7 +180,7 @@
                                     </div>
         
                                     <div class="botones modal-footer">
-                                        <button id="botonModalAgregarVenta" class="btn-success">Agregar</button>
+                                        <button id="botonModalAgregarUsuario" class="btn-success">Agregar</button>
                                     </div>
                                 </div>
                             </div>
@@ -214,13 +213,11 @@
         </div>
 
     </div>
-
-    <script src="../js/records/view/records_view.js" type="module"></script>
+    <script src="../js/user/users.js" type="module"></script>
     <script src="https://kit.fontawesome.com/1a5bcd4a97.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
+    
 </body>
-
 </html>

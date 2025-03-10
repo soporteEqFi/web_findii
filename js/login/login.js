@@ -8,9 +8,17 @@ const Vista = {
         Controlador.iniciarSesion(usuario, contraseña);
     }, 
     redirigirIndex(){
-        location.href ="../index.html"
-    }
-
+        location.href ="./admin.html"
+    },
+    redirigirBank(){
+        location.href ="./bank.html"
+    },
+    redirigirAgente(){
+        location.href ="./agent.html"
+    },
+    redirigirFindii(){
+        location.href ="./findii.html"
+    },
 }
 export default Vista;
 

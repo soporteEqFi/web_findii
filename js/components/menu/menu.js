@@ -1,11 +1,11 @@
-import Miscelaneas from "../../otros/miscelaneas.js";
-import Modelo from "../../generales/Modelo/modelo_general.js";
+import Model from "../../user/user_model.js";
+import Miscelaneas from "../../utils/miscelaneas.js";
 
 const Menu = {
 
     usuarioLogeado() {
         if (!localStorage.getItem("access_token")) {
-            location.href = "../index.html";
+            location.href = "./login.html";
             return false
         }
         return true
@@ -13,113 +13,135 @@ const Menu = {
 
     async opcionesMenu() {
         if (this.usuarioLogeado() == true) {
+            
+            const nombreEmpresa = document.getElementById('nombreEmpresa')
             const opcionesMenu = document.getElementById("opcionesMenu");
             const datosUsuarioMenu = document.getElementById("datosUsuarioMenu");
 
             const cedula = localStorage.getItem('cedula')
-            const res = await Modelo.traerDatosPersonalesAgente(cedula)
-    
-            const nombreUsuario = res.data["datos_agente"][0]["nombre"];
-            const rolUsuario = res.data["datos_agente"][0]["rol"];
-            const liderEquipoUsuario = res.data["datos_agente"][0]["lider_equipo"];
+            
+            const res = await Model.getUserInfo(cedula)
+            const nombreUsuario = res.data['nombre']
+            const rolUsuario = res.data["rol"]
+            const empresaNombre = res.data['empresa']
+            const logo = res.data['imagen_aliado']
 
-            if (localStorage.getItem("rol") == "admin") {
-                this.opcionesMenuAdmin(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario)
+            
+
+            if (localStorage.getItem("rol").toLowerCase() == "admin") {
+                this.opcionesMenuAdmin(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
 
-            if (localStorage.getItem("rol") == "calidad") {
-                this.opcionesMenuCalidad(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario)
-            }
-
-            if (localStorage.getItem("rol") == "team leader") {
-                this.opcionesMenuTeamLeader(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario)
+            if (localStorage.getItem("rol").toLowerCase() == "banco") {
+                this.opcionesMenuBanco(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
             
-            if (localStorage.getItem("rol") == "agente") {
-                this.opcionesMenuAgente(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario)
+            if (localStorage.getItem("rol").toLowerCase() == "asesor") {
+                this.opcionesMenuAsesor(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
+            }
+
+            if (localStorage.getItem("rol").toLowerCase() == "calidad") {
+                this.opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo)
             }
 
         } // Este ELSE no estaba añadido, lo estoy probando 08-02-2025
         else {
-            if (localStorage.getItem("rol") == "admin") {
-                this.opcionesMenuAdmin(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario)
+            if (localStorage.getItem("rol").toLowerCase() == "admin") {
+                this.opcionesMenuAdmin(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario,empresaNombre, logo)
             }else{
-                this.opcionesMenuCalidad(opcionesMenu, datosUsuarioMenu, "Prueba", "rolUsuario", "liderEquipoUsuario")
+                this.opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, "Prueba", "rolUsuario",empresaNombre, logo)
             }
         }
     },
 
-    opcionesMenuAdmin(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario) {
+    opcionesMenuAdmin(nombreEmpresa,opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo) {
+
+        nombreEmpresa.innerHTML = 
+            `
+            <img src="${logo}" alt="">
+            <h1 >${empresaNombre}</h1>
+            `
         opcionesMenu.innerHTML =
             `
             <a class="" href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
-            <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a class="" href="./users.html"><i class="fa-solid fa-users"></i> Usuarios</a>
+            <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
         `
         <p>${nombreUsuario} </p>
         <p>${rolUsuario} </p>
-        <p>Lider: ${liderEquipoUsuario} </p>
+    
         `
 
         return opcionesMenu
     },
 
-    opcionesMenuTeamLeader(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario) {
+    opcionesMenuBanco(nombreEmpresa,opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo) {
+        nombreEmpresa.innerHTML = 
+        `
+        <img src="${logo}" alt="">
+        <h1>${empresaNombre}</h1>
+        `
         opcionesMenu.innerHTML =
             `
-            <a class="" href="./team_leader.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
-            <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a class="" href="./bank.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a class="" href="./profile.html"><i class="fa-solid fa-users"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
         `
         <p>${nombreUsuario} </p>
         <p>${rolUsuario} </p>
-        <p>Lider: ${liderEquipoUsuario} </p>
         `
 
         return opcionesMenu
     },
 
-    opcionesMenuCalidad(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario) {
+    opcionesMenuAsesor(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo){
+        nombreEmpresa.innerHTML = 
+        `
+        <img src="${logo}" alt="">
+        <h1>${empresaNombre}</h1>
+        `
         opcionesMenu.innerHTML =
-            `
-            <a class="" href="./calidad.html"><i class="fa-solid fa-house"></i> Inicio</a>
+        `
+            <a href="./agent.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
+            <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
         `
         <p>${nombreUsuario} </p>
         <p>${rolUsuario} </p>
-        <p>Lider: ${liderEquipoUsuario} </p>
         `
 
         return opcionesMenu
     },
 
-    opcionesMenuAgente(opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, liderEquipoUsuario){
+    opcionesMenuCalidad(nombreEmpresa, opcionesMenu, datosUsuarioMenu, nombreUsuario, rolUsuario, empresaNombre, logo){
+        nombreEmpresa.innerHTML = 
+        `
+        <img src="${logo}" alt="">
+        <h1>${empresaNombre}</h1>
+        `
         opcionesMenu.innerHTML =
         `
-            <a href="agentes.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
             <a class="" href="./estadisticas.html"><i class="fa-solid fa-chart-simple"></i> Estadísticas</a>
-            <a class="" href="./perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
+            <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
         datosUsuarioMenu.innerHTML = 
         `
         <p>${nombreUsuario} </p>
         <p>${rolUsuario} </p>
-        <p>Lider: ${liderEquipoUsuario} </p>
         `
 
         return opcionesMenu
-    }
+    },
 
 }
 
@@ -129,7 +151,7 @@ const cerrarSesion = document.getElementById("cerrarSesion")
 
 cerrarSesion.onclick = function () {
     localStorage.clear();
-    Miscelaneas.redirigirLogin();
+    Miscelaneas.redirigirLogin()
 }
 
 
