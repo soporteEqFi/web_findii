@@ -44,6 +44,36 @@ const Model = {
             headers: config.headers,
           });
           return res
+    },
+    async get_all_user(){
+        const res = axios({
+            method: "GET",
+            url: "http://127.0.0.1:5000/get-all-user/",
+            headers: config.headers
+        })
+        return res
+
+    },
+    async create_user(datos){
+        const data = {
+            nombre: datos.nombre,
+            cedula: datos.cedula,
+            email: datos.correo,
+            password: datos.contraseña,
+            rol: datos.rol,
+            empresa: datos.empresa
+        }
+
+        console.log(data)
+        
+        const res = axios({
+            method: "POST",
+            url: "http://127.0.0.1:5000/create-user/",
+            data: data,
+            headers: config.headers,
+          });
+          return res
+
     }
 }
 export default Model;

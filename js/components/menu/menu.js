@@ -64,7 +64,7 @@ const Menu = {
         opcionesMenu.innerHTML =
             `
             <a class="" href="./admin.html"><i class="fa-solid fa-house"></i> Inicio</a>
-            <a class="" href="./usuarios.html"><i class="fa-solid fa-users"></i> Usuarios</a>
+            <a class="" href="./users.html"><i class="fa-solid fa-users"></i> Usuarios</a>
             <a class="" href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
         `
 
