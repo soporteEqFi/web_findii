@@ -48,7 +48,7 @@ const Model = {
     async get_all_user(){
         const res = axios({
             method: "GET",
-            url: "http://127.0.0.1:5000/get-all-user/",
+            url: "https://equitisoporte.pythonanywhere.com/get-all-user/",
             headers: config.headers
         })
         return res
@@ -68,7 +68,7 @@ const Model = {
         
         const res = axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/create-user/",
+            url: "https://equitisoporte.pythonanywhere.com/create-user/",
             data: data,
             headers: config.headers,
           });
