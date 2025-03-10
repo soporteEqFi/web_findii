@@ -1,5 +1,5 @@
 // import Controller from "../records/controller/records_controller.js";
-import Controller from "../user/user_controller/user_controller.js";
+import Controller from "./controller_profile.js";
 import Menu from "./menu/menu.js";
 import ModalProfile from './Modal/modal_perfil.js'
 import Modal from './Modal/modal.js'
@@ -8,6 +8,7 @@ import swalAlert from './sweet_alert/sweetAlert.js'
 const VistaProfile = {
     mostrarDatosUsuario(res) {
         const datos = res.data;
+      
         const imagenAliado = datos["imagen_aliado"];
         const cedula = datos["cedula"];
         // const correo = datos["correo"];
@@ -84,9 +85,8 @@ export default VistaProfile;
 
 
 document.addEventListener('DOMContentLoaded', function () {
-
-    Controller.userData()
     Menu.opcionesMenu()
+  Controller.userData()
 
 });
 
